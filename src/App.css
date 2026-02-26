@@ -1,0 +1,4 @@
+/* Minimal - all styles via Tailwind + inline styles in components */
+#root {
+  min-height: 100vh;
+}
