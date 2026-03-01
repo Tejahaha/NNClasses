@@ -1,15 +1,48 @@
 /* Keyframes + animation utils */
 @import "tailwindcss";
 
+:root {
+  /* 3-Tier Depth System */
+  --color-dark: #0A1628;
+  /* Hero, footer, faculty section */
+  --color-mid: #0D1F38;
+  /* Card backgrounds, feature section */
+  --color-light: #F5F0E8;
+  /* FAQ, map section, white areas */
+
+  /* Accents */
+  --color-accent: #00C9A7;
+  /* Teal highlights */
+  --color-gold: #FFB347;
+  /* CTAs, emphasis */
+
+  /* Expanded palette for gradients and hovers */
+  --color-darker: #050D18;
+  --color-mid-light: #1B2C46;
+  --color-gold-light: #FFC875;
+  --color-gold-yellow: #FF9E1B;
+}
+
 /* Global box-sizing reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-/* Prevent horizontal overflow on all screens */
-html, body {
-  overflow-x: hidden;
+/* Prevent horizontal overflow on all screens while keeping sticky */
+html,
+body {
+  overflow-x: clip;
   max-width: 100%;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Display font class */
+.font-display {
+  font-family: 'Syne', sans-serif;
 }
 
 @keyframes fadeInUp {
@@ -87,9 +120,16 @@ html, body {
 
 /* On small screens, reduce animation stagger so it feels snappy */
 @media (max-width: 640px) {
-  .d1, .d2, .d3, .d4, .d5, .d6 {
+
+  .d1,
+  .d2,
+  .d3,
+  .d4,
+  .d5,
+  .d6 {
     transition-delay: 0s;
   }
+
   .section-animate {
     transition-duration: 0.45s;
   }

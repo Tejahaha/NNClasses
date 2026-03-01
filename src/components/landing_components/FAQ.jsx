@@ -33,7 +33,7 @@ export default function FAQ() {
     const [open, setOpen] = useState(null);
 
     return (
-        <section id="faqs" className="py-24 max-md:py-16 bg-white">
+        <section id="faqs" className="py-24 max-md:py-16" style={{ backgroundColor: '#EFF4EE' }}>
             <style>{faqIllustrationStyle}</style>
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
@@ -111,7 +111,7 @@ export default function FAQ() {
                     <SlideRight>
                         <div className="flex items-center justify-center">
                             <img
-                                src="/illustrations/Questions-bro.svg"
+                                src="/illustrations/FAQs-rafiki.svg"
                                 alt="Questions illustration"
                                 className="faq-illustration"
                                 style={{ width: '100%', maxWidth: '520px', height: 'auto' }}

@@ -6,9 +6,12 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import qpData from './qpData';
 import YearItem from './YearItem';
 import AssignmentsSidebar from './AssignmentsSidebar';
+
+// Years available in public/qp_PDFs/
+const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022];
+
 
 const MODULES = [
     { id: 'question-papers', label: 'Question Papers', icon: QuestionPapersIcon },
@@ -64,7 +67,7 @@ export default function Sidebar({ activeModule, onModuleSelect, selectedYear, on
     const [assignmentsOpen, setAssignmentsOpen] = useState(true);
     const navigate = useNavigate();
 
-    const sortedYears = [...qpData].sort((a, b) => b.year - a.year);
+    const sortedYears = [...AVAILABLE_YEARS].sort((a, b) => b - a);
 
     return (
         <>
@@ -248,12 +251,12 @@ export default function Sidebar({ activeModule, onModuleSelect, selectedYear, on
                                                 <p className="text-xs font-semibold uppercase tracking-wider mb-2 mt-2 px-1" style={{ color: '#9CA3AF' }}>
                                                     Previous Papers
                                                 </p>
-                                                {sortedYears.map(item => (
+                                                {sortedYears.map(year => (
                                                     <YearItem
-                                                        key={item.year}
-                                                        year={item.year}
-                                                        isActive={selectedYear === item.year}
-                                                        onClick={() => onYearSelect(item)}
+                                                        key={year}
+                                                        year={year}
+                                                        isActive={selectedYear === year}
+                                                        onClick={() => onYearSelect({ year, pdfUrl: `/qp_PDFs/${year}.pdf` })}
                                                     />
                                                 ))}
                                             </div>

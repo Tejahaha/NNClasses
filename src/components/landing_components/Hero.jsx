@@ -3,13 +3,13 @@ import { FadeUp } from './AnimateOnScroll';
 import Grainient from './Grainient';
 
 const B = {
-    primary: '#1F5E78',
-    secondary: '#2E7C97',
-    light: '#5FA8C4',
-    dark: '#123B4A',
-    gold: '#D4A62A',
-    goldLight: '#E8D38A',
-    goldYellow: '#F4C542',
+    primary: '#0A1628',   // Deep Navy
+    secondary: '#00C9A7', // Electric Teal
+    light: '#1B2C46',     // Lighter Navy for accents
+    dark: '#050D18',      // Darker Navy for depth
+    gold: '#FFB347',      // Warm Amber
+    goldLight: '#FFC875', // Lighter Amber
+    goldYellow: '#FF9E1B', // Richer Amber
 };
 
 export default function Hero() {
@@ -18,8 +18,8 @@ export default function Hero() {
         <section
             id="about"
             style={{
-                minHeight: '70vh',
-                paddingBottom: 'clamp(120px, 18vw, 340px)',
+                minHeight: '40vh',
+                paddingBottom: 'clamp(150px, 20vw, 340px)',
                 paddingTop: '5vh',
                 position: 'relative',
                 overflow: 'visible',
@@ -75,11 +75,12 @@ export default function Hero() {
                 {/* H1 */}
                 <FadeUp delay={0.18}>
                     <h1
-                        className="font-bold text-white leading-tight tracking-tight mb-6 sm:mb-8"
-                        style={{ fontSize: 'clamp(26px, 6vw, 40px)' }}
+                        className="font-display font-bold text-white leading-tight tracking-tight mb-8 sm:mb-12"
+                        style={{ fontSize: 'clamp(48px, 10vw, 84px)' }}
                     >
-                        For Fearless Learning and Pressure Proof Environment Join{' '}
-                        <span style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                        Fearless Learning. <br className="hidden sm:block" />
+                        Zero Pressure. Join{' '}
+                        <span className="block mt-4 sm:mt-6" style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                             N &amp; N Academy
                         </span>
                     </h1>
@@ -87,9 +88,9 @@ export default function Hero() {
 
                 {/* Subtext */}
                 <FadeUp delay={0.3}>
-                    <p className="leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.68)', fontSize: 'clamp(15px, 4vw, 18px)' }}>
-                        Built on trust, discipline, and academic authority — Nova gives you every tool
-                        to learn, build, and ship with confidence.
+                    <p className="leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.68)', fontSize: 'clamp(18px, 5vw, 20px)' }}>
+                        Built on trust, discipline, and academic authority — N &amp; N Academy gives you every tool
+                        to learn, grow, and succeed with confidence.
                     </p>
                 </FadeUp>
 
@@ -98,7 +99,7 @@ export default function Hero() {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
                         <button
                             onClick={() => navigate('/student-section')}
-                            className="w-full sm:w-auto flex items-center justify-center gap-2.5 font-bold rounded-[12px] px-8 py-4 text-base transition-all duration-200"
+                            className="w-full sm:w-auto flex items-center justify-center gap-2.5 font-bold rounded-[12px] px-8 py-4 text-[18px] transition-all duration-200"
                             style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`, color: '#1A1A1A', boxShadow: '0 4px 20px rgba(212,166,42,0.4)' }}
                             onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(1.08)'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(212,166,42,0.5)'; }}
                             onMouseLeave={e => { e.currentTarget.style.filter = ''; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 4px 20px rgba(212,166,42,0.4)'; }}
@@ -106,13 +107,23 @@ export default function Hero() {
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                                 <path d="M9 1.5L11.25 7H16.5L12.375 10.5L14.25 16.5L9 13L3.75 16.5L5.625 10.5L1.5 7H6.75L9 1.5Z" fill="currentColor" />
                             </svg>
-                            Get Access
+                            Start Learning
                         </button>
                         <button
-                            className="w-full sm:w-auto flex items-center justify-center gap-2.5 font-semibold rounded-[12px] px-7 py-4 text-base transition-all duration-200"
+                            className="w-full sm:w-auto flex items-center justify-center gap-2.5 font-semibold rounded-[12px] px-7 py-4 text-[18px] transition-all duration-300"
                             style={{ background: 'rgba(255,255,255,0.12)', color: 'white', border: '1.5px solid rgba(255,255,255,0.3)' }}
-                            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; e.currentTarget.style.transform = ''; }}
+                            onMouseEnter={e => {
+                                e.currentTarget.style.background = 'rgba(212,166,42,0.15)';
+                                e.currentTarget.style.borderColor = 'rgba(212,166,42,0.4)';
+                                e.currentTarget.style.color = B.goldLight;
+                                e.currentTarget.style.transform = 'translateY(-2px)';
+                            }}
+                            onMouseLeave={e => {
+                                e.currentTarget.style.background = 'rgba(255,255,255,0.12)';
+                                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)';
+                                e.currentTarget.style.color = 'white';
+                                e.currentTarget.style.transform = '';
+                            }}
                         >
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                                 <circle cx="9" cy="9" r="7.5" stroke="currentColor" strokeWidth="1.5" />
@@ -126,7 +137,7 @@ export default function Hero() {
                 {/* Trust bar */}
                 <FadeUp delay={0.54}>
                     <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-6"
-                        style={{ color: 'rgba(255,255,255,0.45)', fontSize: '13px' }}>
+                        style={{ color: 'rgba(255,255,255,0.45)', fontSize: '15px' }}>
                         {['Trusted by 4,000+ users', 'Academic Authority', 'Premium Coaching', '99.9% Uptime'].map(t => (
                             <span key={t} className="flex items-center gap-1.5">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">

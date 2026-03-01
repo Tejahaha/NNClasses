@@ -1,13 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useScrollReveal } from './useScrollReveal';
 
 const B = {
-    primary: '#1F5E78',
-    secondary: '#2E7C97',
-    light: '#5FA8C4',
-    dark: '#123B4A',
-    gold: '#D4A62A',
-    goldLight: '#E8D38A',
-    goldYellow: '#F4C542',
+    primary: '#0A1628',   // Deep Navy
+    secondary: '#00C9A7', // Electric Teal
+    light: '#1B2C46',     // Lighter Navy
+    dark: '#050D18',      // Darker Navy
+    gold: '#FFB347',      // Warm Amber
+    goldLight: '#FFC875', // Lighter Amber
+    goldYellow: '#FF9E1B', // Richer Amber
 };
 
 const FACULTY = [
@@ -50,17 +50,7 @@ const FACULTY = [
 ];
 
 export default function DarkPromo() {
-    const ref = useRef(null);
-    useEffect(() => {
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting)
-                    e.target.querySelectorAll('.section-animate').forEach(el => el.classList.add('visible'));
-            });
-        }, { threshold: 0.08 });
-        if (ref.current) obs.observe(ref.current);
-        return () => obs.disconnect();
-    }, []);
+    const ref = useScrollReveal();
 
     return (
         <section
@@ -99,24 +89,15 @@ export default function DarkPromo() {
                     {FACULTY.map((f, i) => (
                         <div
                             key={f.name}
-                            className={`section-animate d${i + 1} relative rounded-[20px] p-4 sm:p-7 overflow-hidden group`}
+                            className={`section-animate d${i + 1} relative rounded-[20px] p-4 sm:p-7 overflow-hidden group hover:-translate-y-1 hover:shadow-[0_32px_80px_rgba(0,0,0,0.5)] transition-all duration-300`}
                             style={{
-                                background: 'rgba(10, 26, 33, 0.85)',
-                                border: '1px solid rgba(95,168,196,0.14)',
+                                background: 'rgba(10, 26, 40, 0.85)',
+                                border: '1px solid rgba(0,201,167,0.14)',
                                 boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
-                                transition: 'transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease',
-                            }}
-                            onMouseEnter={e => {
-                                e.currentTarget.style.transform = 'translateY(-4px)';
-                                e.currentTarget.style.boxShadow = '0 32px 80px rgba(0,0,0,0.5)';
-                                e.currentTarget.style.borderColor = `${f.color}50`;
-                            }}
-                            onMouseLeave={e => {
-                                e.currentTarget.style.transform = '';
-                                e.currentTarget.style.boxShadow = '0 20px 60px rgba(0,0,0,0.4)';
-                                e.currentTarget.style.borderColor = 'rgba(95,168,196,0.14)';
+                                '--hover-border': `${f.color}50`
                             }}
                         >
+                            <style>{`.group:hover { border-color: var(--hover-border) !important; }`}</style>
                             {/* Coloured top bar */}
                             <div
                                 className="absolute top-0 left-0 right-0 h-[3px] rounded-t-[20px]"

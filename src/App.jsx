@@ -37,7 +37,7 @@ function LandingPage() {
   }, []);
 
   return (
-    <div style={{ fontFamily: "'Inter', system-ui, sans-serif", WebkitFontSmoothing: 'antialiased' }}>
+    <div style={{ fontFamily: "'General Sans', sans-serif", WebkitFontSmoothing: 'antialiased' }}>
       {/* ── Sticky Header ─────────────────────── */}
       <Navbar />
 

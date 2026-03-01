@@ -1,12 +1,13 @@
 import Iridescence from './Iridescence';
+import { useNavigate } from 'react-router-dom';
 
 const B = {
-    primary: '#1F5E78',
-    secondary: '#2E7C97',
-    light: '#5FA8C4',
-    dark: '#123B4A',
-    gold: '#D4A62A',
-    goldYellow: '#F4C542',
+    primary: '#0A1628',   // Deep Navy
+    secondary: '#00C9A7', // Electric Teal
+    light: '#1B2C46',     // Lighter Navy
+    dark: '#050D18',      // Darker Navy
+    gold: '#FFB347',      // Warm Amber
+    goldYellow: '#FF9E1B', // Richer Amber
 };
 
 const COLS = {
@@ -17,6 +18,7 @@ const COLS = {
 };
 
 export default function Footer() {
+    const navigate = useNavigate();
     return (
         <footer style={{
             /* Shiny black glossy base */
@@ -43,7 +45,7 @@ export default function Footer() {
                 {/* Iridescence fills the entire strip */}
                 <div className="absolute inset-0" style={{ zIndex: 0 }}>
                     <Iridescence
-                        color={[0.12, 0.37, 0.47]}   /* maps to brand primary #1F5E78 */
+                        color={[0.04, 0.09, 0.16]}   /* maps to brand primary Navy #0A1628 */
                         mouseReact
                         amplitude={0.12}
                         speed={0.2}
@@ -53,17 +55,18 @@ export default function Footer() {
                 <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, background: 'rgba(18,59,74,0.55)' }} />
 
                 <div className="relative max-w-2xl mx-auto px-4 sm:px-6" style={{ zIndex: 2 }}>
-                    <h2 className="text-[42px] max-md:text-[28px] font-bold text-white leading-tight mb-4 tracking-tight">
+                    <h2 className="font-display text-[52px] max-md:text-[36px] font-bold text-white leading-tight mb-4 tracking-tight">
                         Ready to{' '}
                         <span style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                             achieve more?
                         </span>
                     </h2>
-                    <p className="text-[16px] leading-relaxed mb-9" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                        Join 4,000+ learners and teams building with Nova. Start for free — no credit card required.
+                    <p className="text-[20px] max-md:text-[18px] leading-relaxed mb-9" style={{ color: 'rgba(255,255,255,0.45)' }}>
+                        Join 4,000+ students learning at N &amp; N Academy. Start for free — no credit card required.
                     </p>
                     <button
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 font-bold rounded-[10px] px-9 py-4 text-base transition-all duration-200"
+                        onClick={() => navigate('/student-section')}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 font-bold rounded-[10px] px-9 py-4 text-[18px] transition-all duration-200"
                         style={{
                             background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`,
                             color: '#1A1A1A',
@@ -83,9 +86,9 @@ export default function Footer() {
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                             <path d="M9 1.5L11.5 7H17L12.6 10.5L14.5 17L9 13.2L3.5 17L5.4 10.5L1 7H6.5L9 1.5Z" fill="currentColor" />
                         </svg>
-                        Request Early Access — Free
+                        Start Learning
                     </button>
-                    <p className="mt-3 text-[13px]" style={{ color: 'rgba(255,255,255,0.25)' }}>
+                    <p className="mt-3 text-[15px]" style={{ color: 'rgba(255,255,255,0.5)' }}>
                         No credit card · Cancel anytime
                     </p>
                 </div>
@@ -108,26 +111,26 @@ export default function Footer() {
                                 className="h-8 w-auto"
                                 onError={e => { e.target.style.display = 'none'; }}
                             />
-                            <span className="text-xl font-bold" style={{ color: B.light }}>
-                                Nova
+                            <span className="text-2xl font-bold" style={{ color: B.light }}>
+                                N &amp; N
                             </span>
                         </div>
-                        <p className="text-[13px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.3)', maxWidth: 220 }}>
-                            The AI platform that helps teams build, ship, and scale faster — anchored in trust, discipline, and academic authority.
+                        <p className="text-[16px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.3)', maxWidth: 280 }}>
+                            The premier coaching institute that helps students learn, grow, and achieve their goals — anchored in trust, discipline, and academic authority.
                         </p>
                     </div>
 
                     {Object.entries(COLS).map(([group, links]) => (
                         <div key={group}>
-                            <h4 className="text-[11px] font-bold uppercase tracking-widest mb-4"
+                            <h4 className="text-[14px] font-bold uppercase tracking-widest mb-4"
                                 style={{ color: B.light, opacity: 0.6 }}>
                                 {group}
                             </h4>
                             <ul className="space-y-3">
                                 {links.map(l => (
                                     <li key={l}>
-                                        <a href="#"
-                                            className="text-[13px] transition-colors duration-150"
+                                        <a href="/"
+                                            className="text-[16px] transition-colors duration-150"
                                             style={{ color: 'rgba(255,255,255,0.3)' }}
                                             onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.75)'}
                                             onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.3)'}>
@@ -146,15 +149,15 @@ export default function Footer() {
                         borderTop: '1px solid rgba(255,255,255,0.07)',
                         boxShadow: '0 -1px 0 rgba(255,255,255,0.04)',
                     }}>
-                    <p className="text-[12px]" style={{ color: 'rgba(255,255,255,0.2)' }}>
-                        © {new Date().getFullYear()} Nova AI, Inc. All rights reserved.
+                    <p className="text-[14px]" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                        © {new Date().getFullYear()} N &amp; N Academy. All rights reserved.
                     </p>
                     <div className="flex gap-5">
                         {['Privacy', 'Terms', 'Cookies'].map(l => (
-                            <a key={l} href="#" className="text-[12px] transition-colors duration-150"
-                                style={{ color: 'rgba(255,255,255,0.2)' }}
+                            <a key={l} href="/" className="text-[14px] transition-colors duration-150"
+                                style={{ color: 'rgba(255,255,255,0.5)' }}
                                 onMouseEnter={e => e.currentTarget.style.color = B.light}
-                                onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.2)'}>
+                                onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
                                 {l}
                             </a>
                         ))}

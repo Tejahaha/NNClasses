@@ -1,7 +1,7 @@
 export default function FloatingVideo() {
     return (
         <div style={{ position: 'relative', height: 0, zIndex: 30, overflow: 'visible' }}>
-            {/* Halo glow — soft blue tint per brand spec */}
+            {/* Halo glow — electric teal tint */}
             <div style={{
                 position: 'absolute',
                 left: '50%',
@@ -10,11 +10,11 @@ export default function FloatingVideo() {
                 transform: 'translateX(-50%) translateY(-50%)',
                 aspectRatio: '16 / 9',
                 borderRadius: '24px',
-                boxShadow: '0 0 80px 24px rgba(31,94,120,0.28), 0 0 160px 48px rgba(95,168,196,0.14)',
+                boxShadow: '0 0 80px 24px rgba(0,201,167,0.15), 0 0 160px 48px rgba(0,201,167,0.08)',
                 pointerEvents: 'none',
             }} />
 
-            {/* Floating card — brand.light border (#5FA8C4) */}
+            {/* Floating card */}
             <div style={{
                 position: 'absolute',
                 left: '50%',
@@ -25,15 +25,14 @@ export default function FloatingVideo() {
                 borderRadius: '20px',
                 overflow: 'hidden',
                 /*
-                 * Gradient border: brand primary → brand light (academic blue tones)
-                 * 3px padding = visible border thickness
+                 * Gradient border: Deep Navy → Electric Teal
                  */
-                background: 'linear-gradient(135deg, #123B4A, #1F5E78, #5FA8C4)',
+                background: 'linear-gradient(135deg, #050D18, #0A1628, #00C9A7)',
                 padding: '3px',
                 boxShadow:
-                    '0 0 0 1px rgba(31,94,120,0.35),' +
-                    '0 32px 80px rgba(18,59,74,0.5),' +
-                    '0 0 40px rgba(95,168,196,0.22)',
+                    '0 0 0 1px rgba(10,22,40,0.35),' +
+                    '0 32px 80px rgba(5,13,24,0.6),' +
+                    '0 0 40px rgba(0,201,167,0.15)',
             }}>
                 {/* Inner clip */}
                 <div style={{
@@ -46,7 +45,7 @@ export default function FloatingVideo() {
                     <iframe
                         width="100%"
                         height="100%"
-                        src="https://www.youtube.com/embed/iAtoZar5W58?si=JLP8je2q7QImr9BE&start=5"
+                        src="https://www.youtube-nocookie.com/embed/iAtoZar5W58?si=JLP8je2q7QImr9BE&start=5"
                         title="YouTube video player"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

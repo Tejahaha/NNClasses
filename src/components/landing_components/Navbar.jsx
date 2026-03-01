@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 
 /* ── Brand Tokens ── */
 const B = {
@@ -22,6 +23,7 @@ const NAV_LINKS = [
 export default function Navbar() {
     const [shadow, setShadow] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fn = () => setShadow(window.scrollY > 8);
@@ -40,8 +42,10 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="sticky top-0 w-full bg-white z-50"
+            className="sticky top-0 w-full z-50 transition-colors duration-300"
             style={{
+                backgroundColor: shadow ? 'rgba(255, 255, 255, 0.85)' : 'transparent',
+                backdropFilter: shadow ? 'blur(16px)' : 'none',
                 height: '10vh',
                 minHeight: '60px',
                 maxHeight: '80px',
@@ -53,7 +57,7 @@ export default function Navbar() {
             <div className="h-full max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
                 {/* Logo */}
                 <a
-                    href="#"
+                    href="/"
                     onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                     className="flex items-center gap-3 flex-shrink-0"
                 >
@@ -61,6 +65,7 @@ export default function Navbar() {
                         src="/faculty.png"
                         alt="N&N"
                         className="h-8 w-auto"
+                        loading="lazy"
                         onError={e => { e.target.style.display = 'none'; }}
                     />
                     <span className="text-xl font-bold tracking-tight" style={{ color: B.primary }}>
@@ -87,9 +92,8 @@ export default function Navbar() {
 
                 {/* CTA + Hamburger */}
                 <div className="flex items-center gap-3">
-                    <a
-                        href="#about"
-                        onClick={e => go(e, '#about')}
+                    <button
+                        onClick={() => navigate('/student-section')}
                         className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-white rounded-[10px] px-5 py-2.5 transition-all duration-200"
                         style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`, color: '#1A1A1A' }}
                         onMouseEnter={e => {
@@ -103,10 +107,10 @@ export default function Navbar() {
                             e.currentTarget.style.boxShadow = '';
                         }}
                     >
-                        Get Early Access
-                    </a>
+                        Start Learning
+                    </button>
                     <button
-                        className="md:hidden p-2 rounded-lg transition-colors"
+                        className="md:hidden p-3 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg transition-colors"
                         style={{ color: B.primary }}
                         onClick={() => setMobileOpen(o => !o)}
                     >
@@ -136,11 +140,11 @@ export default function Navbar() {
                             {l.label}
                         </a>
                     ))}
-                    <a href="#about" onClick={e => go(e, '#about')}
-                        className="mt-3 py-3 text-center font-semibold rounded-[10px] text-[#1A1A1A]"
+                    <button onClick={() => { setMobileOpen(false); navigate('/student-section'); }}
+                        className="mt-3 py-3 text-center w-full block font-semibold rounded-[10px] text-[#1A1A1A]"
                         style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})` }}>
-                        Get Early Access
-                    </a>
+                        Start Learning
+                    </button>
                 </div>
             )}
         </motion.header>

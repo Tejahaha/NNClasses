@@ -7,7 +7,6 @@
 import { useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import PDFViewer from './PDFViewer';
-import qpData from './qpData';
 import AssignmentsModule from './AssignmentsModule';
 
 /* ── Coming Soon placeholder for future modules ── */
@@ -173,7 +172,7 @@ export default function StudentSection() {
                 height: '100vh',
                 overflow: 'hidden',
                 background: '#F7F8FA',
-                fontFamily: "'Inter', system-ui, sans-serif",
+                fontFamily: "'General Sans', sans-serif",
                 WebkitFontSmoothing: 'antialiased',
             }}
         >

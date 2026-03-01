@@ -1,12 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useScrollReveal } from './useScrollReveal';
 
 const B = {
-    primary: '#1F5E78',
-    secondary: '#2E7C97',
-    light: '#5FA8C4',
-    dark: '#123B4A',
-    gold: '#D4A62A',
-    goldYellow: '#F4C542',
+    primary: '#0A1628',   // Deep Navy
+    secondary: '#00C9A7', // Electric Teal
+    light: '#1B2C46',     // Lighter Navy
+    dark: '#050D18',      // Darker Navy
+    gold: '#FFB347',      // Warm Amber
+    goldLight: '#FFC875', // Lighter Amber
+    goldYellow: '#FF9E1B', // Richer Amber
 };
 
 const PHASES = [
@@ -18,16 +19,7 @@ const PHASES = [
 ];
 
 export default function Roadmap() {
-    const ref = useRef(null);
-    useEffect(() => {
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) e.target.querySelectorAll('.section-animate').forEach(el => el.classList.add('visible'));
-            });
-        }, { threshold: 0.08 });
-        if (ref.current) obs.observe(ref.current);
-        return () => obs.disconnect();
-    }, []);
+    const ref = useScrollReveal();
 
     const badge = s => ({
         done: { bg: 'rgba(34,197,94,0.12)', color: '#16a34a', text: '✓ Complete' },
@@ -35,11 +27,11 @@ export default function Roadmap() {
         upcoming: { bg: 'rgba(107,114,128,0.1)', color: '#6B7280', text: '◷ Upcoming' },
     }[s]);
 
-    /* Pastel blue-tinted cards instead of purple */
+    /* Dark Navy tinted cards */
     const card = s => ({
-        done: { from: '#f0f9ff', to: '#e0f2fe', border: 'rgba(95,168,196,0.45)', dot: '#22c55e' },
-        active: { from: '#e8f4f8', to: '#d0eaf4', border: `rgba(31,94,120,0.5)`, dot: B.primary },
-        upcoming: { from: '#F7FAFC', to: '#ffffff', border: '#E5E7EB', dot: '#D1D5DB' },
+        done: { from: '#1B2C46', to: '#0A1628', border: 'rgba(0,201,167,0.35)', dot: '#00C9A7' },
+        active: { from: '#0A1628', to: '#050D18', border: `rgba(0,201,167,0.6)`, dot: '#00C9A7' },
+        upcoming: { from: '#050D18', to: '#0A1628', border: 'rgba(255,255,255,0.08)', dot: '#6B7280' },
     }[s]);
 
     return (
@@ -68,20 +60,11 @@ export default function Roadmap() {
                         const c = card(m.status);
                         return (
                             <div key={i}
-                                className={`section-animate d${(i % 3) + 1} rounded-xl p-6`}
+                                className={`section-animate d${(i % 3) + 1} rounded-xl p-6 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,201,167,0.14)] transition-all duration-300`}
                                 style={{
                                     background: `linear-gradient(135deg, ${c.from}, ${c.to})`,
                                     border: `1px solid ${c.border}`,
                                     boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
-                                    transition: 'transform 0.22s ease, box-shadow 0.22s ease',
-                                }}
-                                onMouseEnter={e => {
-                                    e.currentTarget.style.transform = 'translateY(-4px)';
-                                    e.currentTarget.style.boxShadow = `0 16px 40px rgba(31,94,120,0.14)`;
-                                }}
-                                onMouseLeave={e => {
-                                    e.currentTarget.style.transform = '';
-                                    e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.08)';
                                 }}
                             >
                                 <div className="flex items-center justify-between mb-3">
