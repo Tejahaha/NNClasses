@@ -19,8 +19,8 @@ export default function Hero() {
             id="about"
             style={{
                 minHeight: '40vh',
-                paddingBottom: 'clamp(150px, 20vw, 340px)',
-                paddingTop: '5vh',
+                paddingBottom: 'clamp(200px, 26vw, 380px)',
+                paddingTop: '100px',
                 position: 'relative',
                 overflow: 'visible',
                 display: 'flex',
@@ -69,13 +69,11 @@ export default function Hero() {
 
             {/* Content */}
             <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
-                {/* Spacer — preserves height where badge used to be */}
-                <div style={{ height: '44px', marginBottom: '28px' }} />
 
                 {/* H1 */}
                 <FadeUp delay={0.18}>
                     <h1
-                        className="font-display font-bold text-white leading-tight tracking-tight mb-8 sm:mb-12"
+                        className="font-display font-bold text-white leading-tight tracking-tight mb-6 sm:mb-8"
                         style={{ fontSize: 'clamp(48px, 10vw, 84px)' }}
                     >
                         Fearless Learning. <br className="hidden sm:block" />
@@ -88,7 +86,7 @@ export default function Hero() {
 
                 {/* Subtext */}
                 <FadeUp delay={0.3}>
-                    <p className="leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.68)', fontSize: 'clamp(18px, 5vw, 20px)' }}>
+                    <p className="leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.68)', fontSize: 'clamp(18px, 5vw, 20px)' }}>
                         Built on trust, discipline, and academic authority — N &amp; N Academy gives you every tool
                         to learn, grow, and succeed with confidence.
                     </p>
@@ -136,7 +134,7 @@ export default function Hero() {
 
                 {/* Trust bar */}
                 <FadeUp delay={0.54}>
-                    <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-6"
+                    <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-6"
                         style={{ color: 'rgba(255,255,255,0.45)', fontSize: '15px' }}>
                         {['Trusted by 4,000+ users', 'Academic Authority', 'Premium Coaching', '99.9% Uptime'].map(t => (
                             <span key={t} className="flex items-center gap-1.5">
