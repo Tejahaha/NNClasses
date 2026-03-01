@@ -14,21 +14,21 @@ function ComingSoon({ module }) {
     const icons = {
         notes: (
             <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-                <rect x="8" y="5" width="28" height="34" rx="4" stroke="#2E7C97" strokeWidth="1.8" fill="#EEF6FA" />
-                <path d="M14 14h16M14 20h16M14 26h10" stroke="#2E7C97" strokeWidth="1.6" strokeLinecap="round" />
+                <rect x="8" y="5" width="28" height="34" rx="4" stroke="#00C9A7" strokeWidth="1.8" fill="#F9F6F0" />
+                <path d="M14 14h16M14 20h16M14 26h10" stroke="#00C9A7" strokeWidth="1.6" strokeLinecap="round" />
             </svg>
         ),
         assignments: (
             <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-                <rect x="7" y="7" width="30" height="30" rx="4" stroke="#2E7C97" strokeWidth="1.8" fill="#EEF6FA" />
-                <path d="M15 22l5 5 10-10" stroke="#2E7C97" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <rect x="7" y="7" width="30" height="30" rx="4" stroke="#00C9A7" strokeWidth="1.8" fill="#F9F6F0" />
+                <path d="M15 22l5 5 10-10" stroke="#00C9A7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
         ),
         results: (
             <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-                <rect x="5" y="25" width="9" height="14" rx="2" fill="#2E7C97" opacity="0.7" />
-                <rect x="18" y="17" width="9" height="22" rx="2" fill="#2E7C97" opacity="0.5" />
-                <rect x="31" y="7" width="9" height="32" rx="2" fill="#2E7C97" opacity="0.3" />
+                <rect x="5" y="25" width="9" height="14" rx="2" fill="#00C9A7" opacity="0.7" />
+                <rect x="18" y="17" width="9" height="22" rx="2" fill="#00C9A7" opacity="0.5" />
+                <rect x="31" y="7" width="9" height="32" rx="2" fill="#00C9A7" opacity="0.3" />
             </svg>
         ),
     };
@@ -42,7 +42,7 @@ function ComingSoon({ module }) {
     return (
         <div
             className="flex-1 flex flex-col items-center justify-center h-full px-6"
-            style={{ background: '#F7F8FA' }}
+            style={{ background: '#F8FAFC' }}
         >
             <div
                 className="flex flex-col items-center gap-5 max-w-sm text-center"
@@ -50,13 +50,13 @@ function ComingSoon({ module }) {
             >
                 <div
                     className="w-24 h-24 rounded-3xl flex items-center justify-center"
-                    style={{ background: 'linear-gradient(135deg, #EEF6FA, #D1E9F3)', boxShadow: '0 8px 32px rgba(31,94,120,0.10)' }}
+                    style={{ background: 'linear-gradient(135deg, #F9F6F0, #E2E8F0)', boxShadow: '0 8px 32px rgba(10,22,40,0.06)' }}
                 >
                     {icons[module] || null}
                 </div>
 
                 <div>
-                    <h3 className="font-bold text-lg mb-2" style={{ color: '#1F5E78' }}>
+                    <h3 className="font-bold text-lg mb-2" style={{ color: '#0A1628' }}>
                         {labels[module] || module} — Coming Soon
                     </h3>
                     <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>
@@ -114,15 +114,15 @@ function MobileTopBar({ activeModule, onHamburger }) {
             <div className="flex items-center gap-2">
                 <div
                     className="w-7 h-7 rounded-lg flex items-center justify-center"
-                    style={{ background: 'linear-gradient(135deg, #1F5E78, #2E7C97)' }}
+                    style={{ background: 'linear-gradient(135deg, #0A1628, #0D1F38)' }}
                 >
                     <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
                         <path d="M10 2L2 7l8 5 8-5-8-5Z" fill="white" />
                     </svg>
                 </div>
                 <div>
-                    <p className="text-xs font-semibold" style={{ color: '#9CA3AF' }}>Student Section</p>
-                    <p className="text-sm font-bold leading-tight" style={{ color: '#1F5E78' }}>
+                    <p className="text-xs font-semibold" style={{ color: '#6B7280' }}>Student Section</p>
+                    <p className="text-sm font-bold leading-tight" style={{ color: '#0A1628' }}>
                         {moduleLabels[activeModule] || activeModule}
                     </p>
                 </div>
@@ -171,7 +171,7 @@ export default function StudentSection() {
             style={{
                 height: '100vh',
                 overflow: 'hidden',
-                background: '#F7F8FA',
+                background: '#F8FAFC',
                 fontFamily: "'General Sans', sans-serif",
                 WebkitFontSmoothing: 'antialiased',
             }}

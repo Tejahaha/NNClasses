@@ -50,8 +50,8 @@ export default function ChapterDetail({ classLvl, subject, chapterId, onBack }) 
                                         onClick={() => setActiveTopicId(t.id)}
                                         className="w-full text-left px-3 py-2.5 rounded-xl text-sm transition-colors block truncate"
                                         style={{
-                                            background: isActive ? '#EEF6FA' : 'transparent',
-                                            color: isActive ? '#1F5E78' : '#4B5563',
+                                            background: isActive ? '#F9F6F0' : 'transparent',
+                                            color: isActive ? '#0A1628' : '#4B5563',
                                             fontWeight: isActive ? 600 : 400
                                         }}
                                         title={t.title}

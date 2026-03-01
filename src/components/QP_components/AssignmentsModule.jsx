@@ -40,13 +40,13 @@ function Breadcrumbs({ assignmentState, setAssignmentState }) {
                             </svg>
                         )}
                         {isLast ? (
-                            <span className="font-semibold" style={{ color: '#1F5E78' }}>{crumb.label}</span>
+                            <span className="font-semibold" style={{ color: '#0A1628' }}>{crumb.label}</span>
                         ) : (
                             <button
                                 onClick={crumb.onClick}
                                 className="font-medium transition-colors hover:underline"
                                 style={{ color: '#6B7280' }}
-                                onMouseEnter={e => e.currentTarget.style.color = '#1F5E78'}
+                                onMouseEnter={e => e.currentTarget.style.color = '#0A1628'}
                                 onMouseLeave={e => e.currentTarget.style.color = '#6B7280'}
                             >
                                 {crumb.label}
@@ -96,11 +96,11 @@ export default function AssignmentsModule({ assignmentState, setAssignmentState 
 
     if (!classLvl || !subject) {
         return (
-            <div className="flex-1 flex flex-col items-center justify-center h-full px-6" style={{ background: '#F7F8FA' }}>
+            <div className="flex-1 flex flex-col items-center justify-center h-full px-6" style={{ background: '#F8FAFC' }}>
                 <div className="flex flex-col items-center gap-5 max-w-md text-center" style={{ animation: 'fadeInUp 0.4s ease both' }}>
                     <img src="/illustrations/Classroom-rafiki.svg" alt="Classroom" style={{ width: '260px', maxWidth: '80%' }} />
                     <div>
-                        <h3 className="font-bold text-lg mb-2" style={{ color: '#1F5E78' }}>
+                        <h3 className="font-bold text-lg mb-2" style={{ color: '#0A1628' }}>
                             Assignments Explorer
                         </h3>
                         <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>
@@ -114,7 +114,7 @@ export default function AssignmentsModule({ assignmentState, setAssignmentState 
 
     if (!chapterId) {
         return (
-            <div className="flex-1 overflow-auto h-full p-5 md:p-8" style={{ background: '#F7F8FA' }}>
+            <div className="flex-1 overflow-auto h-full p-5 md:p-8" style={{ background: '#F8FAFC' }}>
                 <Breadcrumbs assignmentState={assignmentState} setAssignmentState={setAssignmentState} />
                 <ChapterGrid
                     classLvl={classLvl}
@@ -126,7 +126,7 @@ export default function AssignmentsModule({ assignmentState, setAssignmentState 
     }
 
     return (
-        <div className="flex-1 overflow-auto h-full p-5 md:p-8" style={{ background: '#F7F8FA' }}>
+        <div className="flex-1 overflow-auto h-full p-5 md:p-8" style={{ background: '#F8FAFC' }}>
             <Breadcrumbs assignmentState={assignmentState} setAssignmentState={setAssignmentState} />
             <ChapterDetail
                 classLvl={classLvl}

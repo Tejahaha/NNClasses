@@ -6,11 +6,11 @@ export default function FloatingVideo() {
                 position: 'absolute',
                 left: '50%',
                 top: 0,
-                width: 'min(82vw, 1140px)',
-                transform: 'translateX(-50%) translateY(-50%)',
+                width: 'min(80vw, 1100px)',          // ← matches card exactly now
+                transform: 'translateX(-50%) translateY(-60%)',
                 aspectRatio: '16 / 9',
-                borderRadius: '24px',
-                boxShadow: '0 0 80px 24px rgba(0,201,167,0.15), 0 0 160px 48px rgba(0,201,167,0.08)',
+                borderRadius: '20px',                // ← matches card border radius
+                boxShadow: '0 0 60px 16px rgba(0,201,167,0.12), 0 0 120px 32px rgba(0,201,167,0.06)',
                 pointerEvents: 'none',
             }} />
 
@@ -20,7 +20,7 @@ export default function FloatingVideo() {
                 left: '50%',
                 top: 0,
                 width: 'min(80vw, 1100px)',
-                transform: 'translateX(-50%) translateY(-50%)',
+                transform: 'translateX(-50%) translateY(-60%)',
                 aspectRatio: '16 / 9',
                 borderRadius: '20px',
                 overflow: 'hidden',

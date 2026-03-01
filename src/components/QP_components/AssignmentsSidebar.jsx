@@ -28,8 +28,8 @@ export default function AssignmentsSidebar({ assignmentState, setAssignmentState
                             onClick={(e) => { e.stopPropagation(); toggleClass(cls); }}
                             className="w-full flex items-center justify-between px-3 py-2 text-sm rounded-lg transition-colors"
                             style={{
-                                color: isClassExpanded ? '#1F5E78' : '#4B5563',
-                                background: isClassExpanded ? '#EEF6FA' : 'transparent',
+                                color: isClassExpanded ? '#0A1628' : '#4B5563',
+                                background: isClassExpanded ? '#F9F6F0' : 'transparent',
                                 fontWeight: isClassExpanded ? 600 : 400
                             }}
                         >
@@ -62,8 +62,8 @@ export default function AssignmentsSidebar({ assignmentState, setAssignmentState
                                             onClick={(e) => { e.stopPropagation(); selectSubject(cls, sub); }}
                                             className="w-full text-left px-3 py-1.5 text-sm rounded-lg transition-colors block"
                                             style={{
-                                                color: isSubSelected ? '#1F5E78' : '#6B7280',
-                                                background: isSubSelected ? '#F3F9FC' : 'transparent',
+                                                color: isSubSelected ? '#0A1628' : '#6B7280',
+                                                background: isSubSelected ? '#FAFAFA' : 'transparent',
                                                 fontWeight: isSubSelected ? 600 : 400
                                             }}
                                         >

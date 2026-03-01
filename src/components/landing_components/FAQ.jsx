@@ -33,14 +33,19 @@ export default function FAQ() {
     const [open, setOpen] = useState(null);
 
     return (
-        <section id="faqs" className="py-24 max-md:py-16" style={{ backgroundColor: '#EFF4EE' }}>
+        <section id="faqs" className="py-24 max-md:py-16 relative overflow-hidden" style={{ backgroundColor: '#F9F6F0' }}>
             <style>{faqIllustrationStyle}</style>
-            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+            {/* Mesh Gradient Backgrounds */}
+            <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(0,201,167,0.06)_0%,transparent_70%)] rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none blur-3xl mix-blend-multiply" />
+            <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(255,179,71,0.07)_0%,transparent_70%)] rounded-full translate-x-1/3 translate-y-1/3 pointer-events-none blur-3xl mix-blend-multiply" />
+
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
 
                 {/* ── Section header ── */}
                 <FadeUp className="text-center mb-14">
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold mb-5"
-                        style={{ background: `rgba(31,94,120,0.07)`, color: B.primary, border: `1px solid rgba(31,94,120,0.16)` }}>
+                        style={{ background: `rgba(10,22,40,0.07)`, color: B.primary, border: `1px solid rgba(10,22,40,0.16)` }}>
                         ？ FAQs &amp; Location
                     </div>
                     <h2 className="font-semibold text-[#1A1A1A] leading-tight mb-4" style={{ fontSize: 'clamp(22px, 5vw, 36px)' }}>

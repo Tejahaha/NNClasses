@@ -97,7 +97,7 @@ export default function TopicQuestions({ topic }) {
                                         }}
                                         onMouseEnter={e => {
                                             if (!isAnswered) {
-                                                e.currentTarget.style.background = '#F3F9FC';
+                                                e.currentTarget.style.background = '#FAFAFA';
                                                 e.currentTarget.style.borderColor = '#93C5FD';
                                             }
                                         }}
@@ -178,15 +178,15 @@ export default function TopicQuestions({ topic }) {
                 <div
                     className="rounded-2xl p-5 text-center mt-6"
                     style={{
-                        background: 'linear-gradient(135deg, #EEF6FA, #D1E9F3)',
-                        border: '1px solid #BFD9E8',
+                        background: 'linear-gradient(135deg, #F9F6F0, #E2E8F0)',
+                        border: '1px solid #E2E8F0',
                         animation: 'fadeInUp 0.4s ease both',
                     }}
                 >
-                    <p className="text-2xl font-bold mb-1" style={{ color: '#1F5E78' }}>
+                    <p className="text-2xl font-bold mb-1" style={{ color: '#0A1628' }}>
                         {correctCount}/{topic.questions.length}
                     </p>
-                    <p className="text-sm" style={{ color: '#4B7A8D' }}>
+                    <p className="text-sm" style={{ color: '#00C9A7' }}>
                         {correctCount === topic.questions.length
                             ? '🎉 Perfect score! Excellent work!'
                             : correctCount >= topic.questions.length / 2

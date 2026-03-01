@@ -27,7 +27,7 @@ function QuestionPapersIcon({ color }) {
             <rect x="3" y="1" width="11" height="15" rx="2" stroke={color} strokeWidth="1.6" />
             <path d="M6 5.5h5M6 8.5h5M6 11.5h3" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
             <path d="M14 5h3l-3-3v3Z" fill={color} />
-            <rect x="12" y="5" width="5" height="11" rx="1.5" fill="#F7F8FA" stroke={color} strokeWidth="1.4" />
+            <rect x="12" y="5" width="5" height="11" rx="1.5" fill="#F8FAFC" stroke={color} strokeWidth="1.4" />
             <path d="M14 8h3M14 11h3M14 14h2" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
         </svg>
     );
@@ -104,18 +104,18 @@ export default function Sidebar({ activeModule, onModuleSelect, selectedYear, on
                     <div className="flex items-center gap-3">
                         <div
                             className="w-9 h-9 rounded-xl flex items-center justify-center"
-                            style={{ background: 'linear-gradient(135deg, #1F5E78, #2E7C97)' }}
+                            style={{ background: 'linear-gradient(135deg, #0A1628, #0D1F38)' }}
                         >
                             <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                                <path d="M10 2L2 7l8 5 8-5-8-5Z" fill="white" />
-                                <path d="M2 13l8 5 8-5" stroke="white" strokeWidth="1.6" strokeLinecap="round" fill="none" />
+                                <path d="M10 2L2 7l8 5 8-5-8-5Z" fill="#00C9A7" />
+                                <path d="M2 13l8 5 8-5" stroke="#00C9A7" strokeWidth="1.6" strokeLinecap="round" fill="none" />
                             </svg>
                         </div>
                         <div>
-                            <p className="font-bold text-sm" style={{ color: '#1F5E78', lineHeight: '1.2' }}>
+                            <p className="font-bold text-sm" style={{ color: '#0A1628', lineHeight: '1.2' }}>
                                 N & N Academy
                             </p>
-                            <p className="text-xs" style={{ color: '#9CA3AF' }}>Student Section</p>
+                            <p className="text-xs" style={{ color: '#6B7280' }}>Student Section</p>
                         </div>
                     </div>
 
@@ -136,7 +136,7 @@ export default function Sidebar({ activeModule, onModuleSelect, selectedYear, on
 
                 {/* ── Module Navigation ── */}
                 <nav className="flex-1 px-3 py-4">
-                    <p className="text-xs font-semibold uppercase tracking-widest mb-3 px-2" style={{ color: '#9CA3AF' }}>
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-3 px-2" style={{ color: '#6B7280' }}>
                         Modules
                     </p>
 
@@ -144,7 +144,7 @@ export default function Sidebar({ activeModule, onModuleSelect, selectedYear, on
                         {MODULES.map(mod => {
                             const isActive = activeModule === mod.id;
                             const IconComp = mod.icon;
-                            const iconColor = isActive ? '#1F5E78' : '#9CA3AF';
+                            const iconColor = isActive ? '#0A1628' : '#6B7280';
 
                             return (
                                 <li key={mod.id}>
@@ -153,14 +153,14 @@ export default function Sidebar({ activeModule, onModuleSelect, selectedYear, on
                                         onClick={() => onModuleSelect(mod.id)}
                                         className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-200 relative"
                                         style={{
-                                            background: isActive ? '#EEF6FA' : 'transparent',
-                                            color: isActive ? '#1F5E78' : '#4B5563',
+                                            background: isActive ? '#F9F6F0' : 'transparent',
+                                            color: isActive ? '#0A1628' : '#4B5563',
                                             fontWeight: isActive ? 600 : 400,
                                         }}
                                         onMouseEnter={e => {
                                             if (!isActive) {
-                                                e.currentTarget.style.background = '#F3F9FC';
-                                                e.currentTarget.style.color = '#1F5E78';
+                                                e.currentTarget.style.background = '#FAFAFA';
+                                                e.currentTarget.style.color = '#0A1628';
                                             }
                                         }}
                                         onMouseLeave={e => {
@@ -175,7 +175,7 @@ export default function Sidebar({ activeModule, onModuleSelect, selectedYear, on
                                             className="absolute left-0 top-2 bottom-2 rounded-r-full"
                                             style={{
                                                 width: isActive ? '3px' : '0',
-                                                background: '#1F5E78',
+                                                background: '#00C9A7',
                                                 transition: 'width 0.2s ease',
                                             }}
                                         />
@@ -196,7 +196,7 @@ export default function Sidebar({ activeModule, onModuleSelect, selectedYear, on
                                                 style={{
                                                     transform: isActive && qpOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                                                     transition: 'transform 0.28s ease',
-                                                    color: isActive ? '#1F5E78' : '#9CA3AF',
+                                                    color: isActive ? '#0A1628' : '#6B7280',
                                                     flexShrink: 0,
                                                 }}
                                                 onClick={e => {
@@ -220,7 +220,7 @@ export default function Sidebar({ activeModule, onModuleSelect, selectedYear, on
                                                 style={{
                                                     transform: isActive && assignmentsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                                                     transition: 'transform 0.28s ease',
-                                                    color: isActive ? '#1F5E78' : '#9CA3AF',
+                                                    color: isActive ? '#0A1628' : '#6B7280',
                                                     flexShrink: 0,
                                                 }}
                                                 onClick={e => {
@@ -248,7 +248,7 @@ export default function Sidebar({ activeModule, onModuleSelect, selectedYear, on
                                                 className="ml-4 mt-1 mb-1 pl-3 space-y-0.5"
                                                 style={{ borderLeft: '1.5px solid #D1E9F3' }}
                                             >
-                                                <p className="text-xs font-semibold uppercase tracking-wider mb-2 mt-2 px-1" style={{ color: '#9CA3AF' }}>
+                                                <p className="text-xs font-semibold uppercase tracking-wider mb-2 mt-2 px-1" style={{ color: '#6B7280' }}>
                                                     Previous Papers
                                                 </p>
                                                 {sortedYears.map(year => (

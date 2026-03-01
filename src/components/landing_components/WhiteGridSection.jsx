@@ -11,7 +11,7 @@ const B = {
 };
 
 const GRID_BG = {
-    backgroundColor: '#EFF4EE', /* Slightly tinted off-white */
+    backgroundColor: '#fffefd', /* Slightly tinted off-white */
     backgroundImage:
         'linear-gradient(#E2E8F0 1px, transparent 1px),' +
         'linear-gradient(90deg, #E2E8F0 1px, transparent 1px)',
@@ -199,7 +199,7 @@ export default function WhiteGridSection() {
                     {/* ── Panel 2: GUIDELINES ── */}
                     <SlideRight>
                         <div className="rounded-3xl flex flex-col overflow-hidden h-full"
-                            style={{ background: '#F5F0E8', border: `1px solid rgba(10,22,40,0.1)`, boxShadow: `0 24px 80px rgba(10,22,40,0.06)` }}>
+                            style={{ background: '#F9F6F0', border: `1px solid rgba(10,22,40,0.1)`, boxShadow: `0 24px 80px rgba(10,22,40,0.06)` }}>
                             <div className="px-6 sm:px-8 pt-8 sm:pt-9 pb-6 border-b relative overflow-hidden"
                                 style={{ borderColor: `rgba(10,22,40,0.08)`, background: `linear-gradient(135deg, rgba(10,22,40,0.03), rgba(0,201,167,0.02))` }}>
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[rgba(0,201,167,0.05)] to-transparent rounded-full blur-3xl -mr-10 -mt-10" />
@@ -223,7 +223,7 @@ export default function WhiteGridSection() {
                                             className="flex items-center gap-5 rounded-2xl p-4 transition-all duration-300 cursor-default group"
                                             style={{ background: '#F8FAFC', border: `1px solid rgba(10,22,40,0.05)` }}
                                             onMouseEnter={e => {
-                                                e.currentTarget.style.background = '#F5F0E8';
+                                                e.currentTarget.style.background = '#F9F6F0';
                                                 e.currentTarget.style.borderColor = `rgba(0,201,167,0.3)`;
                                                 e.currentTarget.style.transform = 'translateY(-3px)';
                                                 e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,201,167,0.08)';
@@ -236,7 +236,7 @@ export default function WhiteGridSection() {
                                             }}
                                         >
                                             <div className="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center transition-colors duration-300 group-hover:bg-[#00C9A7] group-hover:text-white"
-                                                style={{ background: `#F5F0E8`, border: `1.5px solid rgba(0,201,167,0.2)`, color: B.secondary, boxShadow: '0 4px 12px rgba(0,0,0,0.02)' }}>
+                                                style={{ background: `#F9F6F0`, border: `1.5px solid rgba(0,201,167,0.2)`, color: B.secondary, boxShadow: '0 4px 12px rgba(0,0,0,0.02)' }}>
                                                 <ItemIcon />
                                             </div>
                                             <div>
