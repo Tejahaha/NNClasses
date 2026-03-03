@@ -80,7 +80,7 @@ const FAQItem = ({ item, index, isOpen, onToggle }) => {
                         {item.q}
                     </span>
                 </div>
-                
+
                 <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-gradient-to-br from-[#00C9A7] to-[#00A88C] rotate-180' : 'bg-[rgba(10,22,40,0.06)]'}`}>
                     <svg width="13" height="13" viewBox="0 0 14 14" fill="none" className="transition-colors">
                         <path d="M3 5l4 4 4-4" stroke={isOpen ? '#fff' : 'rgba(10,22,40,0.5)'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -88,7 +88,7 @@ const FAQItem = ({ item, index, isOpen, onToggle }) => {
                 </div>
             </button>
 
-            <div 
+            <div
                 className="overflow-hidden transition-[height] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
                 style={{ height }}
             >
@@ -145,7 +145,7 @@ const MapSection = () => (
                     referrerPolicy="no-referrer-when-downgrade"
                     title="N & N Academy Location"
                 />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[rgba(10,22,40,0.5)] backdrop-blur-sm">
+                <div className="absolute inset-0 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200 bg-[rgba(10,22,40,0.5)] backdrop-blur-sm">
                     <span className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#FFB347] to-[#FF9E1B] text-[#1A1A1A] font-bold text-sm shadow-xl">
                         📍 Open in Google Maps →
                     </span>
@@ -215,7 +215,7 @@ export default function FAQ() {
             {/* Background decorations */}
             <div className="absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(0,201,167,0.07)_0%,transparent_70%)] pointer-events-none" />
             <div className="absolute -bottom-16 -right-16 w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,rgba(255,179,71,0.08)_0%,transparent_70%)] pointer-events-none" />
-            <div 
+            <div
                 className="absolute inset-0 pointer-events-none z-0"
                 style={{
                     backgroundImage: 'linear-gradient(rgba(10,22,40,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(10,22,40,0.025) 1px, transparent 1px)',
@@ -233,14 +233,14 @@ export default function FAQ() {
                             FAQs & Location
                         </span>
                     </div>
-                    
+
                     <h2 className="text-[clamp(28px,5.5vw,52px)] font-extrabold text-[#0A1628] leading-tight tracking-tight mb-4">
                         Got questions?{' '}
                         <span className="bg-gradient-to-br from-[#FFB347] to-[#FF9E1B] bg-clip-text text-transparent">
                             We've got answers.
                         </span>
                     </h2>
-                    
+
                     <p className="text-[clamp(15px,2vw,17px)] text-[rgba(10,22,40,0.55)] max-w-xl mx-auto leading-relaxed">
                         Everything you need to know about N & N Academy — admissions, courses, faculty, and more.
                     </p>

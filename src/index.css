@@ -1,6 +1,112 @@
 /* Keyframes + animation utils */
 @import "tailwindcss";
 
+/* Tell Tailwind v4 to use .dark class instead of prefers-color-scheme */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ═══════════════════════════════════════════
+   PORTAL DESIGN TOKENS  (light / dark)
+   All --p-* vars consumed by portal components
+   ═══════════════════════════════════════════ */
+:root {
+  /* Backgrounds */
+  --p-bg-gradient: linear-gradient(145deg, #F0F4FF 0%, #F8FAFF 50%, #EEF2FF 100%);
+  --p-surface: rgba(255, 255, 255, 0.75);
+  --p-surface-blur: rgba(255, 255, 255, 0.65);
+  --p-sub-surface: rgba(248, 250, 255, 0.85);
+  --p-content-bg: #F8FAFF;
+  --p-card: rgba(255, 255, 255, 0.7);
+  --p-input-bg: rgba(241, 245, 249, 0.8);
+  --p-input-bg-focus: rgba(255, 255, 255, 0.95);
+  --p-dropdown-bg: rgba(255, 255, 255, 0.92);
+
+  /* Text */
+  --p-text-1: #0F172A;
+  --p-text-2: #334155;
+  --p-text-3: #64748B;
+  --p-text-4: #94A3B8;
+  --p-text-body: #334155;
+
+  /* Borders */
+  --p-border: rgba(226, 232, 240, 0.6);
+  --p-border-med: rgba(203, 213, 225, 0.5);
+  --p-border-strong: rgba(139, 92, 246, 0.2);
+
+  /* Accent / interactive */
+  --p-accent: #8B5CF6;
+  --p-active-bg: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.06));
+  --p-active-item: rgba(139, 92, 246, 0.08);
+  --p-hover-violet: rgba(139, 92, 246, 0.05);
+  --p-hover-violet-med: rgba(139, 92, 246, 0.1);
+  --p-hover-violet-strong: rgba(139, 92, 246, 0.12);
+
+  /* Gradient text */
+  --p-gradient-text-from: #8B5CF6;
+  --p-gradient-text-to: #06B6D4;
+
+  /* Shadows */
+  --p-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+  --p-shadow-lg: 0 10px 40px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.04);
+  --p-shadow-card: 0 2px 8px rgba(15, 23, 42, 0.04), 0 0 1px rgba(15, 23, 42, 0.06);
+  --p-shadow-card-hover: 0 8px 24px rgba(139, 92, 246, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+.dark {
+  /* Backgrounds */
+  --p-bg-gradient: linear-gradient(145deg, #0B1120 0%, #0F172A 50%, #0B1222 100%);
+  --p-surface: rgba(15, 23, 42, 0.8);
+  --p-surface-blur: rgba(15, 23, 42, 0.7);
+  --p-sub-surface: rgba(15, 23, 42, 0.9);
+  --p-content-bg: #0F172A;
+  --p-card: rgba(30, 41, 59, 0.6);
+  --p-input-bg: rgba(30, 41, 59, 0.7);
+  --p-input-bg-focus: rgba(30, 41, 59, 0.9);
+  --p-dropdown-bg: rgba(20, 30, 48, 0.95);
+
+  /* Text */
+  --p-text-1: #F1F5F9;
+  --p-text-2: #CBD5E1;
+  --p-text-3: #94A3B8;
+  --p-text-4: #64748B;
+  --p-text-body: #CBD5E1;
+
+  /* Borders */
+  --p-border: rgba(51, 65, 85, 0.5);
+  --p-border-med: rgba(71, 85, 105, 0.4);
+  --p-border-strong: rgba(139, 92, 246, 0.3);
+
+  /* Accent / interactive */
+  --p-accent: #A78BFA;
+  --p-active-bg: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(6, 182, 212, 0.1));
+  --p-active-item: rgba(139, 92, 246, 0.14);
+  --p-hover-violet: rgba(139, 92, 246, 0.08);
+  --p-hover-violet-med: rgba(139, 92, 246, 0.15);
+  --p-hover-violet-strong: rgba(139, 92, 246, 0.18);
+
+  /* Gradient text */
+  --p-gradient-text-from: #A78BFA;
+  --p-gradient-text-to: #22D3EE;
+
+  /* Shadows */
+  --p-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --p-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.15);
+  --p-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.2);
+  --p-shadow-card-hover: 0 8px 24px rgba(139, 92, 246, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Portal fade-in animation (used by Dashboard, ComingSoon, etc.) */
+@keyframes portalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Global box-sizing reset */
 *,
 *::before,
@@ -168,4 +274,18 @@ body {
 .faculty-scroll::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #2E7C97 0%, #7CC8E0 60%, #2E7C97 100%);
   box-shadow: 0 0 10px rgba(95, 168, 196, 0.75);
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE MODULE TRANSITION
+   150ms fade-in for context continuity
+   ═══════════════════════════════════════════ */
+@keyframes moduleIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

@@ -19,8 +19,8 @@ export default function Hero() {
             id="about"
             style={{
                 minHeight: '40vh',
-                paddingBottom: 'clamp(200px, 26vw, 380px)',
-                paddingTop: '100px',
+                paddingBottom: 'clamp(280px, 38vw, 520px)',
+                paddingTop: '80px',
                 position: 'relative',
                 overflow: 'visible',
                 display: 'flex',
@@ -77,19 +77,11 @@ export default function Hero() {
                         style={{ fontSize: 'clamp(48px, 10vw, 84px)' }}
                     >
                         Fearless Learning. <br className="hidden sm:block" />
-                        Zero Pressure. Join{' '}
+                        Zero Pressure.
                         <span className="block mt-4 sm:mt-6" style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                             N &amp; N Academy
                         </span>
                     </h1>
-                </FadeUp>
-
-                {/* Subtext */}
-                <FadeUp delay={0.3}>
-                    <p className="leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.68)', fontSize: 'clamp(18px, 5vw, 20px)' }}>
-                        Built on trust, discipline, and academic authority — N &amp; N Academy gives you every tool
-                        to learn, grow, and succeed with confidence.
-                    </p>
                 </FadeUp>
 
                 {/* CTAs */}

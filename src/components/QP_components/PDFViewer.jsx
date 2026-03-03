@@ -8,7 +8,7 @@ export default function PDFViewer({ selectedYear, pdfUrl }) {
     /* ── Empty state ── */
     if (!selectedYear) {
         return (
-            <div className="flex-1 flex flex-col items-center justify-center h-full px-6" style={{ background: '#F8FAFC' }}>
+            <div className="flex-1 flex flex-col items-center justify-center h-full px-4 md:px-6" style={{ background: 'var(--p-content-bg)' }}>
                 <div
                     className="flex flex-col items-center gap-5 max-w-md text-center"
                     style={{ animation: 'fadeInUp 0.5s ease both' }}
@@ -17,15 +17,15 @@ export default function PDFViewer({ selectedYear, pdfUrl }) {
                     <img src="/illustrations/Classroom-rafiki.svg" alt="Classroom" style={{ width: '260px', maxWidth: '80%' }} />
 
                     <div>
-                        <h3 className="font-semibold text-lg mb-2" style={{ color: '#0A1628' }}>
+                        <h3 className="font-semibold text-lg mb-2" style={{ color: 'var(--p-text-1)' }}>
                             Select a Year to Preview
                         </h3>
-                        <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>
+                        <p className="text-sm leading-relaxed" style={{ color: 'var(--p-text-3)' }}>
                             Choose a question paper year from the sidebar to preview and download the PDF.
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-2 text-xs px-4 py-2 rounded-full" style={{ background: '#F9F6F0', color: '#0A1628' }}>
+                    <div className="flex items-center gap-2 text-xs px-4 py-2 rounded-full" style={{ background: 'var(--p-active-item)', color: 'var(--p-text-1)' }}>
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                             <circle cx="6.5" cy="6.5" r="5.5" stroke="#00C9A7" strokeWidth="1.3" />
                             <path d="M6.5 6v4" stroke="#00C9A7" strokeWidth="1.3" strokeLinecap="round" />
@@ -41,24 +41,24 @@ export default function PDFViewer({ selectedYear, pdfUrl }) {
     /* ── PDF Preview Card ── */
     return (
         <div
-            className="flex-1 flex flex-col h-full overflow-auto px-6 py-6 md:px-10 md:py-8"
-            style={{ background: '#F8FAFC' }}
+            className="flex-1 flex flex-col h-full overflow-auto px-3 py-4 md:px-10 md:py-8"
+            style={{ background: 'var(--p-content-bg)' }}
         >
             {/* Page title bar */}
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between mb-4 md:mb-6">
                 <div>
-                    <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#6B7280' }}>
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: 'var(--p-text-3)' }}>
                         Question Papers
                     </p>
-                    <h1 className="text-xl font-bold" style={{ color: '#0A1628' }}>
+                    <h1 className="text-lg md:text-xl font-bold" style={{ color: 'var(--p-text-1)' }}>
                         Question Paper — {selectedYear}
                     </h1>
                 </div>
 
                 {/* Badge */}
                 <span
-                    className="text-xs font-semibold px-3 py-1.5 rounded-full"
-                    style={{ background: '#F9F6F0', color: '#0A1628', border: '1px solid #E2E8F0' }}
+                    className="text-xs font-semibold px-3 py-1.5 rounded-full self-start"
+                    style={{ background: 'var(--p-active-item)', color: 'var(--p-text-1)', border: '1px solid var(--p-border)' }}
                 >
                     {selectedYear} Edition
                 </span>
@@ -66,20 +66,18 @@ export default function PDFViewer({ selectedYear, pdfUrl }) {
 
             {/* Preview card */}
             <div
-                className="rounded-2xl overflow-hidden flex flex-col"
+                className="rounded-2xl overflow-hidden flex flex-col min-h-[360px] md:min-h-[520px] max-h-[480px] md:max-h-[680px]"
                 style={{
-                    background: '#FFFFFF',
-                    boxShadow: '0 4px 24px rgba(0,0,0,0.07)',
-                    border: '1px solid #E5E7EB',
+                    background: 'var(--p-card)',
+                    boxShadow: 'var(--p-shadow-card)',
+                    border: '1px solid var(--p-border)',
                     flex: 1,
-                    minHeight: '520px',
-                    maxHeight: '680px',
                 }}
             >
                 {/* Card header */}
                 <div
-                    className="flex items-center justify-between px-5 py-4"
-                    style={{ borderBottom: '1px solid #F0F2F5' }}
+                    className="flex items-center justify-between px-3 py-3 md:px-5 md:py-4"
+                    style={{ borderBottom: '1px solid var(--p-border)' }}
                 >
                     <div className="flex items-center gap-2.5">
                         <div
@@ -94,10 +92,10 @@ export default function PDFViewer({ selectedYear, pdfUrl }) {
                             </svg>
                         </div>
                         <div>
-                            <p className="text-sm font-semibold" style={{ color: '#0A1628' }}>
+                            <p className="text-sm font-semibold" style={{ color: 'var(--p-text-1)' }}>
                                 N & N Academy — Question Paper
                             </p>
-                            <p className="text-xs" style={{ color: '#6B7280' }}>Academic Year {selectedYear}</p>
+                            <p className="text-xs" style={{ color: 'var(--p-text-3)' }}>Academic Year {selectedYear}</p>
                         </div>
                     </div>
 
@@ -111,14 +109,14 @@ export default function PDFViewer({ selectedYear, pdfUrl }) {
                     key={pdfUrl}
                     src={pdfUrl}
                     title={`Question Paper ${selectedYear}`}
-                    className="w-full flex-1"
-                    style={{ border: 'none', minHeight: '480px' }}
+                    className="w-full flex-1 min-h-[280px] md:min-h-[480px]"
+                    style={{ border: 'none' }}
                     loading="lazy"
                 />
             </div>
 
             {/* Download button */}
-            <div className="mt-5 flex items-center gap-3">
+            <div className="mt-4 md:mt-5 flex flex-col md:flex-row items-stretch md:items-center gap-2 md:gap-3">
                 <a
                     href={pdfUrl}
                     download={`QP_${selectedYear}_N&N_Academy.pdf`}

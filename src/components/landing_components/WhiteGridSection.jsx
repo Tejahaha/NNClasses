@@ -164,7 +164,7 @@ export default function WhiteGridSection() {
                                 {SALIENT.map(({ Icon: ItemIcon, title, desc }, i) => (
                                     <StaggerItem key={i}>
                                         <div
-                                            className="flex flex-col items-start gap-4 rounded-2xl p-5 h-full transition-all duration-300 cursor-default group"
+                                            className="flex flex-col items-start gap-4 rounded-2xl p-5 h-full transition-all duration-300 cursor-default group active:scale-[0.97]"
                                             style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}
                                             onMouseEnter={e => {
                                                 e.currentTarget.style.background = 'rgba(255,255,255,0.09)';
@@ -220,7 +220,7 @@ export default function WhiteGridSection() {
                                 {GUIDELINES.map(({ Icon: ItemIcon, title, desc }, i) => (
                                     <StaggerItem key={i}>
                                         <div
-                                            className="flex items-center gap-5 rounded-2xl p-4 transition-all duration-300 cursor-default group"
+                                            className="flex items-center gap-5 rounded-2xl p-4 transition-all duration-300 cursor-default group active:scale-[0.97]"
                                             style={{ background: '#F8FAFC', border: `1px solid rgba(10,22,40,0.05)` }}
                                             onMouseEnter={e => {
                                                 e.currentTarget.style.background = '#F9F6F0';

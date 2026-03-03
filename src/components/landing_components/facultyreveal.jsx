@@ -31,35 +31,8 @@ const FACULTY = [
 
 export function FacultyReveal() {
     const sectionRef = useRef(null);
-    const [showChevron, setShowChevron] = useState(false);
-
-    useEffect(() => {
-        const obs = new IntersectionObserver(
-            ([entry]) => {
-                setShowChevron(entry.isIntersecting || entry.boundingClientRect.top < 0);
-            },
-            { threshold: 0 }
-        );
-        if (sectionRef.current) obs.observe(sectionRef.current);
-        return () => obs.disconnect();
-    }, []);
-
     return (
         <section ref={sectionRef} id="benefits" className="py-20 relative" style={{ background: B.dark }}>
-            {/* Scroll to Top Chevron */}
-            <div className={`fixed bottom-8 right-6 sm:right-8 z-50 transition-all duration-500 delay-100 ${showChevron ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
-                <button
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="p-3 sm:p-4 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,201,167,0.4)] cursor-pointer"
-                    style={{ background: B.secondary, color: '#FFFFFF', border: `1px solid ${B.light}` }}
-                    aria-label="Scroll to top"
-                >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M18 15l-6-6-6 6" />
-                    </svg>
-                </button>
-            </div>
-
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
                 {/* Section header */}

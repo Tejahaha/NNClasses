@@ -93,7 +93,7 @@ export default function Navbar() {
                 {/* CTA + Hamburger */}
                 <div className="flex items-center gap-3">
                     <button
-                        onClick={() => navigate('/student-section')}
+                        onClick={() => navigate('/portal')}
                         className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-white rounded-[10px] px-5 py-2.5 transition-all duration-200"
                         style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`, color: '#1A1A1A' }}
                         onMouseEnter={e => {
@@ -140,7 +140,7 @@ export default function Navbar() {
                             {l.label}
                         </a>
                     ))}
-                    <button onClick={() => { setMobileOpen(false); navigate('/student-section'); }}
+                    <button onClick={() => { setMobileOpen(false); navigate('/portal'); }}
                         className="mt-3 py-3 text-center w-full block font-semibold rounded-[10px] text-[#1A1A1A]"
                         style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})` }}>
                         Start Learning

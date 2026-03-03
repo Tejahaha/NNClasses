@@ -13,9 +13,12 @@ import { FacultyReveal } from './components/landing_components/facultyreveal';
 // import Roadmap from './components/landing_components/Roadmap';  // hidden — file kept
 import FAQ from './components/landing_components/FAQ';
 import Footer from './components/landing_components/Footer';
+import FloatingWhatsApp from './components/landing_components/FloatingWhatsApp';
 
 // Student Section portal
 import StudentSection from './components/QP_components/StudentSection';
+import PortalLayout from './components/portal/PortalLayout';
+
 
 /* ── Landing Page wrapper ─────────────────────── */
 function LandingPage() {
@@ -65,6 +68,7 @@ function LandingPage() {
         {/* <Showcase /> — hidden, file kept in /components */}
         {/* <Roadmap /> — hidden, file kept in /components */}
         <FAQ />
+        <FloatingWhatsApp />
       </main>
 
       <Footer />
@@ -78,6 +82,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/portal" element={<PortalLayout />} />
         <Route path="/student-section" element={<StudentSection />} />
       </Routes>
     </BrowserRouter>

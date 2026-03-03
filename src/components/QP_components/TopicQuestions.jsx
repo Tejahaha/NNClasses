@@ -5,7 +5,7 @@ export default function TopicQuestions({ topic }) {
     const [selected, setSelected] = useState({});
 
     if (!topic?.questions?.length) {
-        return <div className="text-gray-500 text-sm py-4">No questions available for this topic.</div>;
+        return <div className="text-sm py-4" style={{ color: 'var(--p-text-3)' }}>No questions available for this topic.</div>;
     }
 
     const handleSelect = (qId, option) => {
@@ -18,7 +18,7 @@ export default function TopicQuestions({ topic }) {
     const correctCount = topic.questions.filter(q => selected[q.id] === q.correctAnswer).length;
 
     return (
-        <div className="space-y-5">
+        <div className="space-y-4 md:space-y-5">
             {topic.questions.map((q, idx) => {
                 const chosen = selected[q.id];
                 const isAnswered = !!chosen;
@@ -27,42 +27,43 @@ export default function TopicQuestions({ topic }) {
                 return (
                     <div
                         key={q.id}
-                        className="bg-white rounded-xl overflow-hidden transition-all duration-300"
+                        className="rounded-xl overflow-hidden transition-all duration-300"
                         style={{
+                            background: 'var(--p-card)',
                             border: isAnswered
                                 ? `1.5px solid ${isCorrect ? '#86EFAC' : '#FCA5A5'}`
-                                : '1px solid #E5E7EB',
+                                : '1px solid var(--p-border)',
                             boxShadow: isAnswered
                                 ? `0 4px 16px ${isCorrect ? 'rgba(34,197,94,0.08)' : 'rgba(239,68,68,0.08)'}`
-                                : '0 2px 8px rgba(0,0,0,0.03)',
+                                : 'var(--p-shadow-sm)',
                         }}
                     >
                         {/* Question */}
-                        <div className="p-4 pb-3">
-                            <div className="flex items-start">
+                        <div className="p-3 pb-2 md:p-4 md:pb-3">
+                            <div className="flex items-start gap-2 md:gap-3">
                                 <span
-                                    className="font-bold mr-3 mt-0.5 min-w-[28px] h-7 w-7 rounded-lg flex items-center justify-center text-xs flex-shrink-0"
-                                    style={{ background: '#F3F4F6', color: '#6B7280' }}
+                                    className="font-bold min-w-[24px] h-6 w-6 md:min-w-[28px] md:h-7 md:w-7 rounded-lg flex items-center justify-center text-xs flex-shrink-0 mt-0.5"
+                                    style={{ background: 'var(--p-active-item)', color: 'var(--p-text-3)' }}
                                 >
                                     {idx + 1}
                                 </span>
-                                <span className="flex-1 text-gray-700 leading-relaxed text-sm md:text-base font-medium">
+                                <span className="flex-1 leading-relaxed text-sm md:text-base font-medium" style={{ color: 'var(--p-text-2)' }}>
                                     {q.text}
                                 </span>
                             </div>
                         </div>
 
-                        {/* Options */}
-                        <div className="px-4 pb-4 space-y-2 ml-[40px]">
+                        {/* Options — full width on mobile, indented on desktop */}
+                        <div className="px-3 pb-3 md:px-4 md:pb-4 md:pl-[52px] space-y-2">
                             {q.options.map((opt, oIdx) => {
                                 const letter = String.fromCharCode(65 + oIdx);
                                 const isThis = chosen === opt;
                                 const isCorrectOption = opt === q.correctAnswer;
 
-                                let bg = 'white';
-                                let border = '#E5E7EB';
-                                let color = '#374151';
-                                let ringColor = '#D1D5DB';
+                                let bg = 'var(--p-card)';
+                                let border = 'var(--p-border)';
+                                let color = 'var(--p-text-2)';
+                                let ringColor = 'var(--p-border-strong)';
 
                                 if (isAnswered) {
                                     if (isCorrectOption) {
@@ -87,7 +88,7 @@ export default function TopicQuestions({ topic }) {
                                         key={oIdx}
                                         onClick={() => handleSelect(q.id, opt)}
                                         disabled={isAnswered}
-                                        className="w-full flex items-center text-sm p-3 rounded-xl transition-all duration-200 text-left"
+                                        className="w-full flex items-center text-sm min-h-[44px] p-3 rounded-xl transition-all duration-200 text-left active:scale-[0.97]"
                                         style={{
                                             background: bg,
                                             border: `1.5px solid ${border}`,
@@ -103,14 +104,14 @@ export default function TopicQuestions({ topic }) {
                                         }}
                                         onMouseLeave={e => {
                                             if (!isAnswered) {
-                                                e.currentTarget.style.background = 'white';
-                                                e.currentTarget.style.borderColor = '#E5E7EB';
+                                                e.currentTarget.style.background = 'var(--p-card)';
+                                                e.currentTarget.style.borderColor = 'var(--p-border)';
                                             }
                                         }}
                                     >
                                         {/* Radio circle */}
                                         <div
-                                            className="w-5 h-5 rounded-full mr-3 flex items-center justify-center flex-shrink-0 transition-all"
+                                            className="w-5 h-5 rounded-full mr-2.5 md:mr-3 flex items-center justify-center flex-shrink-0 transition-all"
                                             style={{
                                                 border: `2px solid ${ringColor}`,
                                                 background: isThis ? ringColor : 'transparent',
@@ -122,8 +123,8 @@ export default function TopicQuestions({ topic }) {
                                                 </svg>
                                             )}
                                         </div>
-                                        <span className="font-medium mr-2 opacity-50 text-xs">{letter}.</span>
-                                        <span className="flex-1">{opt}</span>
+                                        <span className="font-medium mr-1.5 opacity-50 text-xs">{letter}.</span>
+                                        <span className="flex-1 text-sm">{opt}</span>
 
                                         {/* Result icon */}
                                         {isAnswered && isCorrectOption && (
@@ -144,7 +145,7 @@ export default function TopicQuestions({ topic }) {
                         {/* Feedback after answering */}
                         {isAnswered && (
                             <div
-                                className="mx-4 mb-4 ml-[56px] p-3 rounded-xl text-xs font-medium flex items-center transition-all"
+                                className="mx-3 mb-3 md:mx-4 md:mb-4 md:ml-[52px] p-3 rounded-xl text-xs font-medium flex items-center transition-all"
                                 style={{
                                     background: isCorrect ? '#F0FDF4' : '#FEF2F2',
                                     color: isCorrect ? '#166534' : '#991B1B',
@@ -176,7 +177,7 @@ export default function TopicQuestions({ topic }) {
             {/* Score summary — shown after all answered */}
             {answeredCount === topic.questions.length && (
                 <div
-                    className="rounded-2xl p-5 text-center mt-6"
+                    className="rounded-2xl p-4 md:p-5 text-center mt-4 md:mt-6"
                     style={{
                         background: 'linear-gradient(135deg, #F9F6F0, #E2E8F0)',
                         border: '1px solid #E2E8F0',
