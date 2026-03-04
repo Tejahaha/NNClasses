@@ -7,6 +7,8 @@ import Navbar from './components/landing_components/Navbar';
 import Hero from './components/landing_components/Hero';
 import FloatingVideo from './components/landing_components/FloatingVideo';
 import WhiteGridSection from './components/landing_components/WhiteGridSection';
+import TeachingProcess from './components/landing_components/TeachingProcess';
+import StrategyTabs from './components/landing_components/StrategyTabs';
 import { FacultyReveal } from './components/landing_components/facultyreveal';
 // import DarkPromo from './components/landing_components/DarkPromo';  // hidden — file kept
 // import Showcase from './components/landing_components/Showcase';  // hidden — file kept
@@ -61,6 +63,8 @@ function LandingPage() {
         <Hero />
         <FloatingVideo />
         <WhiteGridSection />
+        <TeachingProcess />
+        <StrategyTabs />
 
         {/* ── Remaining Sections ─────────── */}
         <FacultyReveal />

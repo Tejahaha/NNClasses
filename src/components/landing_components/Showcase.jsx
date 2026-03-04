@@ -37,7 +37,7 @@ export default function Showcase() {
                         style={{ background: 'rgba(236,72,153,0.07)', color: '#EC4899', border: '1px solid rgba(236,72,153,0.18)' }}>
                         ✦ Featured Courses
                     </div>
-                    <h2 className="font-semibold text-[#0F172A] leading-tight mb-4" style={{ fontSize: 'clamp(22px, 5vw, 36px)' }}>
+                    <h2 className="font-display font-bold text-[#0F172A] leading-tight mb-4" style={{ fontSize: 'clamp(22px, 5vw, 36px)' }}>
                         Top enrolled{' '}
                         <span style={{ background: `linear-gradient(135deg, ${B.primary}, ${B.secondary})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                             programs

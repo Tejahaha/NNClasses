@@ -1,6 +1,15 @@
 /* Keyframes + animation utils */
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'GC Fodax Demo';
+  src: url('/fonts/GC-Fodax-Demo-BF68b80f61230dc.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
 /* ═══════════════════════════════════════════
    GOLDEN RATIO TYPOGRAPHY SYSTEM (φ = 1.618)
    Font families + scale registered as Tailwind v4 theme tokens.
@@ -10,8 +19,9 @@
    ═══════════════════════════════════════════ */
 @theme {
   /* ── Font Families ───────────────────────────────────────────────── */
-  --font-display: 'Clash Display', 'Helvetica Neue', Arial, sans-serif;
-  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-logo: 'GC Fodax Demo', sans-serif;
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-ui: 'Source Sans 3', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* ── Golden Ratio Scale  (base=16px, multiplier=1.618) ──────────── */
@@ -190,6 +200,11 @@ body {
 /* ─── Mono font class → JetBrains Mono ───────────────────────────── */
 .font-mono {
   font-family: var(--font-mono);
+}
+
+/* ─── Logo font class → GC Fodax Demo ───────────────────────────── */
+.font-logo {
+  font-family: var(--font-logo);
 }
 
 /* ═══════════════════════════════════════════

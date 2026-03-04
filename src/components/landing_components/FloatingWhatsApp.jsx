@@ -20,8 +20,8 @@ export default function FloatingWhatsApp() {
     }, []);
 
     // Replace with the actual phone number
-    const phoneNumber = "917799698698";
-    const message = encodeURIComponent("Hi, I want to know more about N&N Academy.");
+    const phoneNumber = "918919331336";
+    const message = encodeURIComponent("Hi, I want to know more about N&N Classes.");
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
     return (

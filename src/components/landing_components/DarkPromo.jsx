@@ -68,7 +68,7 @@ export default function DarkPromo() {
                     >
                         👨‍🏫 Meet the Faculty
                     </div>
-                    <h2 className="font-semibold text-white leading-tight mb-4" style={{ fontSize: 'clamp(22px, 5vw, 36px)' }}>
+                    <h2 className="font-display font-bold text-white leading-tight mb-4" style={{ fontSize: 'clamp(22px, 5vw, 36px)' }}>
                         Learn from the{' '}
                         <span style={{
                             background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`,

@@ -43,7 +43,7 @@ export default function Roadmap() {
                         style={{ background: 'rgba(95,168,196,0.12)', color: B.light, border: `1px solid rgba(95,168,196,0.28)` }}>
                         ◎ Roadmap
                     </div>
-                    <h2 className="font-semibold text-white leading-tight mb-4" style={{ fontSize: 'clamp(22px, 5vw, 36px)' }}>
+                    <h2 className="font-display font-bold text-white leading-tight mb-4" style={{ fontSize: 'clamp(22px, 5vw, 36px)' }}>
                         What's{' '}
                         <span style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                             coming up

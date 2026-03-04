@@ -41,7 +41,7 @@ export default function Footer() {
                 pointerEvents: 'none', zIndex: 1,
             }} />
             {/* Final CTA strip — Iridescence WebGL background */}
-            <div className="relative py-20 overflow-hidden text-center" style={{ minHeight: '420px' }}>
+            <div className="relative py-16 sm:py-20 overflow-hidden text-center flex flex-col items-center justify-center min-h-[360px] sm:min-h-[420px]">
                 {/* Iridescence fills the entire strip */}
                 <div className="absolute inset-0" style={{ zIndex: 0 }}>
                     <Iridescence

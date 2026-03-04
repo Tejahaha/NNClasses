@@ -70,26 +70,41 @@ export default function Hero() {
             {/* Content */}
             <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
 
-                {/* H1 */}
+                {/* Logo and Tagline */}
                 <FadeUp delay={0.18}>
-                    <h1
-                        className="font-display font-bold text-white leading-tight tracking-tight mb-6 sm:mb-8"
-                        style={{ fontSize: 'clamp(48px, 10vw, 84px)' }}
-                    >
-                        Fearless Learning. <br className="hidden sm:block" />
-                        Zero Pressure.
-                        <span className="block mt-4 sm:mt-6" style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                            N &amp; N Academy
-                        </span>
-                    </h1>
+                    <div className="flex flex-col items-center justify-center w-full relative">
+                        {/* Image scaled efficiently for mobile */}
+                        <img
+                            src="/logos/NNClassesLargeTransparant.png"
+                            alt="N & N Academy"
+                            className="mx-auto block mt-8 sm:mt-16 mb-4 sm:mb-6 w-full max-w-[90vw] sm:max-w-[700px] md:max-w-[1000px] h-auto object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.05)]"
+                        />
+
+                        {/* Tagline Between Cursive-Style Lines */}
+                        <div className="relative flex flex-col items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-14 px-4 sm:px-6 w-full max-w-2xl sm:max-w-3xl mx-auto mt-[-5px] sm:mt-[-25px]">
+                            {/* Golden Aura Glow */}
+                            <div className="absolute inset-0 w-[120%] h-[150%] left-[-10%] top-[-25%] pointer-events-none opacity-60 mix-blend-screen" style={{ background: `radial-gradient(ellipse at center, ${B.gold}4D 0%, transparent 65%)`, filter: 'blur(24px)' }} />
+
+                            {/* Top Golden Line */}
+                            <div className="w-full h-[1px] sm:h-[2px] rounded-full pointer-events-none relative z-10" style={{ background: `linear-gradient(90deg, transparent, ${B.goldYellow}, transparent)`, boxShadow: `0 0 10px ${B.gold}` }} />
+
+                            {/* Inner Golden Text */}
+                            <span className="font-display font-semibold sm:font-semibold text-[15px] sm:text-[18px] md:text-[22px] tracking-[0.15em] sm:tracking-[0.35em] uppercase relative z-20 whitespace-normal sm:whitespace-nowrap text-center leading-relaxed" style={{ color: B.goldLight, textShadow: `0 0 20px border-transparent ${B.gold}, 0 0 40px ${B.goldYellow}` }}>
+                                Institute for IIT, JEE, NEET
+                            </span>
+
+                            {/* Bottom Golden Line */}
+                            <div className="w-full h-[1px] sm:h-[2px] rounded-full pointer-events-none relative z-10" style={{ background: `linear-gradient(90deg, transparent, ${B.goldYellow}, transparent)`, boxShadow: `0 0 10px ${B.gold}` }} />
+                        </div>
+                    </div>
                 </FadeUp>
 
                 {/* CTAs */}
                 <FadeUp delay={0.42}>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full sm:w-auto px-2 sm:px-0">
                         <button
                             onClick={() => navigate('/student-section')}
-                            className="w-full sm:w-auto flex items-center justify-center gap-2.5 font-bold rounded-[12px] px-8 py-4 text-[18px] transition-all duration-200"
+                            className="w-full sm:w-auto flex items-center justify-center gap-2.5 font-bold rounded-[12px] px-8 py-4 text-[17px] sm:text-[18px] transition-all duration-200"
                             style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`, color: '#1A1A1A', boxShadow: '0 4px 20px rgba(212,166,42,0.4)' }}
                             onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(1.08)'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(212,166,42,0.5)'; }}
                             onMouseLeave={e => { e.currentTarget.style.filter = ''; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 4px 20px rgba(212,166,42,0.4)'; }}
@@ -100,7 +115,7 @@ export default function Hero() {
                             Start Learning
                         </button>
                         <button
-                            className="w-full sm:w-auto flex items-center justify-center gap-2.5 font-semibold rounded-[12px] px-7 py-4 text-[18px] transition-all duration-300"
+                            className="w-full sm:w-auto flex items-center justify-center gap-2.5 font-semibold rounded-[12px] px-7 py-4 text-[17px] sm:text-[18px] transition-all duration-300"
                             style={{ background: 'rgba(255,255,255,0.12)', color: 'white', border: '1.5px solid rgba(255,255,255,0.3)' }}
                             onMouseEnter={e => {
                                 e.currentTarget.style.background = 'rgba(212,166,42,0.15)';

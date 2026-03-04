@@ -146,7 +146,7 @@ export default function WhiteGridSection() {
                     <SlideLeft>
                         <div className="rounded-3xl overflow-hidden h-full flex flex-col"
                             style={{ background: `linear-gradient(135deg, ${B.dark} 0%, ${B.primary} 100%)`, boxShadow: `0 24px 80px rgba(18,59,74,0.28)` }}>
-                            <div className="px-6 sm:px-8 pt-8 sm:pt-9 pb-6 border-b" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+                            <div className="px-5 sm:px-8 pt-6 sm:pt-9 pb-5 sm:pb-6 border-b" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
                                 <div className="flex items-center gap-3 mb-2">
                                     <span className="flex items-center justify-center w-8 h-8 rounded-full" style={{ background: 'rgba(212,166,42,0.15)', color: B.goldYellow }}>
                                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none">
@@ -160,7 +160,7 @@ export default function WhiteGridSection() {
                                 <p className="font-display text-[26px] sm:text-[32px] font-bold text-white leading-tight">Academic Blueprint</p>
                             </div>
 
-                            <StaggerContainer className="p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 content-start">
+                            <StaggerContainer className="p-5 sm:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 content-start">
                                 {SALIENT.map(({ Icon: ItemIcon, title, desc }, i) => (
                                     <StaggerItem key={i}>
                                         <div
@@ -200,7 +200,7 @@ export default function WhiteGridSection() {
                     <SlideRight>
                         <div className="rounded-3xl flex flex-col overflow-hidden h-full"
                             style={{ background: '#F9F6F0', border: `1px solid rgba(10,22,40,0.1)`, boxShadow: `0 24px 80px rgba(10,22,40,0.06)` }}>
-                            <div className="px-6 sm:px-8 pt-8 sm:pt-9 pb-6 border-b relative overflow-hidden"
+                            <div className="px-5 sm:px-8 pt-6 sm:pt-9 pb-5 sm:pb-6 border-b relative overflow-hidden"
                                 style={{ borderColor: `rgba(10,22,40,0.08)`, background: `linear-gradient(135deg, rgba(10,22,40,0.03), rgba(0,201,167,0.02))` }}>
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[rgba(0,201,167,0.05)] to-transparent rounded-full blur-3xl -mr-10 -mt-10" />
                                 <div className="relative z-10">
@@ -216,7 +216,7 @@ export default function WhiteGridSection() {
                                 </div>
                             </div>
 
-                            <StaggerContainer className="p-6 sm:p-8 flex flex-col gap-4 flex-1">
+                            <StaggerContainer className="p-5 sm:p-8 flex flex-col gap-4 flex-1">
                                 {GUIDELINES.map(({ Icon: ItemIcon, title, desc }, i) => (
                                     <StaggerItem key={i}>
                                         <div
@@ -249,13 +249,13 @@ export default function WhiteGridSection() {
                             </StaggerContainer>
 
                             {/* Warning banner */}
-                            <div className="mx-6 sm:mx-8 mb-6 sm:mb-8 rounded-xl px-5 py-4 flex items-start gap-4"
+                            <div className="mx-5 sm:mx-8 mb-5 sm:mb-8 rounded-xl px-4 sm:px-5 py-4 flex items-start gap-3 sm:gap-4"
                                 style={{ background: `rgba(212,166,42,0.1)`, border: `1px solid rgba(212,166,42,0.3)` }}>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B48600" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
                                     <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
                                     <line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" />
                                 </svg>
-                                <p className="text-[14px] leading-relaxed font-semibold text-[#B48600]">
+                                <p className="text-[13px] sm:text-[14px] leading-relaxed font-semibold text-[#B48600]">
                                     Compliance with these behavioral and academic guidelines is a mandatory requirement for all enrolled students.
                                 </p>
                             </div>
