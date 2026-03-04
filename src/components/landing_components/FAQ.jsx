@@ -73,7 +73,7 @@ const FAQItem = ({ item, index, isOpen, onToggle }) => {
                 aria-expanded={isOpen}
             >
                 <div className="flex items-center gap-4 flex-1 min-w-0">
-                    <span className="text-xs font-bold tracking-wider text-[#FFB347] font-mono shrink-0">
+                    <span className="text-xs font-bold tracking-wider text-[#FFB347] font-mono shrink-0" style={{ fontWeight: 500 }}>
                         {String(index + 1).padStart(2, '0')}
                     </span>
                     <span className={`text-[15px] leading-snug transition-all duration-200 ${isOpen ? 'font-bold text-[#0A1628]' : 'font-medium text-[rgba(10,22,40,0.85)]'}`}>
@@ -234,7 +234,7 @@ export default function FAQ() {
                         </span>
                     </div>
 
-                    <h2 className="text-[clamp(28px,5.5vw,52px)] font-extrabold text-[#0A1628] leading-tight tracking-tight mb-4">
+                    <h2 className="text-section-fluid text-[#0A1628] mb-4">
                         Got questions?{' '}
                         <span className="bg-gradient-to-br from-[#FFB347] to-[#FF9E1B] bg-clip-text text-transparent">
                             We've got answers.

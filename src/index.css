@@ -1,6 +1,64 @@
 /* Keyframes + animation utils */
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════
+   GOLDEN RATIO TYPOGRAPHY SYSTEM (φ = 1.618)
+   Font families + scale registered as Tailwind v4 theme tokens.
+   Landing page uses --font-display (Clash Display).
+   Portal + all UI uses --font-ui (Inter).
+   Technical accents + stats use --font-mono (JetBrains Mono).
+   ═══════════════════════════════════════════ */
+@theme {
+  /* ── Font Families ───────────────────────────────────────────────── */
+  --font-display: 'Clash Display', 'Helvetica Neue', Arial, sans-serif;
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ── Golden Ratio Scale  (base=16px, multiplier=1.618) ──────────── */
+  /* --text-xs   : 12px  — captions, table meta                       */
+  /* --text-sm   : 14px  — labels, secondary UI                       */
+  /* --text-base : 16px  — body text (φ⁰ anchor)                      */
+  /* --text-lg   : 26px  — card titles, H5 (φ¹)                       */
+  /* --text-xl   : 42px  — portal ceiling, H4 (φ²)                    */
+  /* --text-2xl  : 68px  — landing sections only (φ³)                 */
+  /* --text-3xl  : 110px — landing hero (φ⁴)                          */
+  /* --text-hero : 178px — extreme marketing only (φ⁵)                */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.625rem;
+  --text-xl: 2.625rem;
+  --text-2xl: 4.25rem;
+  --text-3xl: 6.875rem;
+  --text-hero: 11.125rem;
+
+  /* ── Font Weights ────────────────────────────────────────────────── */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ── Line Heights ────────────────────────────────────────────────── */
+  --leading-tight: 1.05;
+  /* hero display                          */
+  --leading-snug: 1.10;
+  /* large section headings                */
+  --leading-heading: 1.20;
+  /* mid headings                          */
+  --leading-ui: 1.35;
+  /* card titles, buttons                  */
+  --leading-body: 1.55;
+  /* paragraph / body text                 */
+
+  /* ── Letter Spacing ─────────────────────────────────────────────── */
+  --tracking-hero: -0.03em;
+  /* Clash Display hero                */
+  --tracking-display: -0.02em;
+  /* Clash Display sections            */
+  --tracking-wide: 0.04em;
+  /* small caps, table headers         */
+}
+
 /* Tell Tailwind v4 to use .dark class instead of prefers-color-scheme */
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -119,14 +177,84 @@ html,
 body {
   overflow-x: clip;
   max-width: 100%;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 18px;
-  line-height: 1.6;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.55;
 }
 
-/* Display font class */
+/* ─── Display font class → Clash Display ──────────────────────────── */
 .font-display {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
+}
+
+/* ─── Mono font class → JetBrains Mono ───────────────────────────── */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ═══════════════════════════════════════════
+   FLUID TYPOGRAPHY — clamp() responsive scaling
+   Viewport range: 375px (mobile) → 1280px (desktop)
+   Golden Ratio endpoints preserved at both extremes.
+   ═══════════════════════════════════════════ */
+
+/* Landing Hero H1 — Clash Display 700 · 44px→110px */
+.text-hero-fluid {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(44px, calc(16.66px + 7.29vw), 110px);
+  line-height: clamp(1.05em, 1.07em, 1.10em);
+  letter-spacing: -0.03em;
+}
+
+/* Landing Section H2 — Clash Display 600 · 34px→68px */
+.text-section-fluid {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(34px, calc(19.90px + 3.76vw), 68px);
+  line-height: 1.10;
+  letter-spacing: -0.02em;
+}
+
+/* Landing Sub-heading H3 — Clash Display 500 · 26px→42px */
+.text-subhead-fluid {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(26px, calc(19.36px + 1.77vw), 42px);
+  line-height: 1.20;
+  letter-spacing: -0.01em;
+}
+
+/* Portal Module Title — Inter 700 · 22px→26px */
+.text-module-fluid {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: clamp(22px, calc(20.35px + 0.44vw), 26px);
+  line-height: 1.30;
+}
+
+/* Portal Card Title — Inter 600 · 18px→20px */
+.text-card-fluid {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: clamp(18px, calc(17.12px + 0.55vw), 20px);
+  line-height: 1.35;
+}
+
+/* Body text — Inter 400 · 15px→16px */
+.text-body-fluid {
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: clamp(15px, calc(14.59px + 0.11vw), 16px);
+  line-height: 1.55;
+}
+
+/* Stats / numeric highlights — JetBrains Mono 600 · 20px→26px */
+.text-stat-fluid {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: clamp(20px, calc(15.76px + 1.77vw), 26px);
+  line-height: 1.10;
 }
 
 @keyframes fadeInUp {

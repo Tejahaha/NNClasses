@@ -55,13 +55,13 @@ export default function Footer() {
                 <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, background: 'rgba(19, 72, 128, 0.64)' }} />
 
                 <div className="relative max-w-2xl mx-auto px-4 sm:px-6" style={{ zIndex: 2 }}>
-                    <h2 className="font-display text-[52px] max-md:text-[36px] font-bold text-white leading-tight mb-4 tracking-tight">
+                    <h2 className="text-hero-fluid text-white mb-4">
                         Ready to{' '}
                         <span style={{ background: `linear-gradient(135deg, ${B.gold}, ${B.goldYellow})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                             achieve more?
                         </span>
                     </h2>
-                    <p className="text-[19px] max-md:text-[17px] leading-relaxed mb-9" style={{ color: 'rgba(255,255,255,0.75)' }}>
+                    <p className="text-body-fluid leading-relaxed mb-9" style={{ color: 'rgba(255,255,255,0.75)' }}>
                         Have questions about admissions, fees, or batch timings? We are here to help.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
@@ -113,7 +113,7 @@ export default function Footer() {
                                 className="h-8 w-auto"
                                 onError={e => { e.target.style.display = 'none'; }}
                             />
-                            <span className="text-2xl font-bold" style={{ color: B.light }}>
+                            <span className="text-2xl font-bold font-display" style={{ color: 'rgba(255,255,255,0.9)' }}>
                                 N &amp; N
                             </span>
                         </div>
