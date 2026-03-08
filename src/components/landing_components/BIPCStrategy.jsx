@@ -1,13 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { FadeUp, SlideLeft, SlideRight } from './AnimateOnScroll';
 
-/* ── Brand tokens ── */
-const B = {
-    primary: '#0A1628',
-    dark: '#050D18',
-    goldYellow: '#FF9E1B',
-    goldLight: '#FFC875',
-};
+import { B } from '../../tokens/brand';
 
 const SUBJECTS = [
     { label: 'Biology', marks: 350, maxMarks: 360, color: '#34D399' },

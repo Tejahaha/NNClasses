@@ -172,7 +172,7 @@ export default function StudentSection() {
                 height: '100vh',
                 overflow: 'hidden',
                 background: '#F8FAFC',
-                fontFamily: "'General Sans', sans-serif",
+                fontFamily: 'var(--font-ui)',
                 WebkitFontSmoothing: 'antialiased',
             }}
         >

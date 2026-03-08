@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /portal
+Disallow: /student-section
+Disallow: /portal/*
+
+Sitemap: https://nnacademy.in/sitemap.xml

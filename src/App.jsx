@@ -1,26 +1,51 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-// Landing page components
+// Landing page components (Keep Static)
 import Navbar from './components/landing_components/Navbar';
 import Hero from './components/landing_components/Hero';
 import FloatingVideo from './components/landing_components/FloatingVideo';
 import WhiteGridSection from './components/landing_components/WhiteGridSection';
 import TeachingProcess from './components/landing_components/TeachingProcess';
 import StrategyTabs from './components/landing_components/StrategyTabs';
-import { FacultyReveal } from './components/landing_components/facultyreveal';
-// import DarkPromo from './components/landing_components/DarkPromo';  // hidden — file kept
-// import Showcase from './components/landing_components/Showcase';  // hidden — file kept
-// import Roadmap from './components/landing_components/Roadmap';  // hidden — file kept
+import FacultyReveal from './components/landing_components/FacultyReveal';
 import FAQ from './components/landing_components/FAQ';
 import Footer from './components/landing_components/Footer';
 import FloatingWhatsApp from './components/landing_components/FloatingWhatsApp';
 
-// Student Section portal
-import StudentSection from './components/QP_components/StudentSection';
-import PortalLayout from './components/portal/PortalLayout';
+// Lazy Loaded Routes
+const StudentSection = lazy(() => import('./components/QP_components/StudentSection'));
+const PortalLayout = lazy(() => import('./components/portal/PortalLayout'));
 
+/* ── Page Loader (Fallback) ─────────────────── */
+function PageLoader() {
+  return (
+    <div style={{
+      position: 'fixed',
+      inset: 0,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#0A1628',
+      zIndex: 9999
+    }}>
+      <style>{`
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
+      <div style={{
+        width: '40px',
+        height: '40px',
+        border: '3px solid rgba(255, 179, 71, 0.2)',
+        borderTopColor: '#FFB347',
+        borderRadius: '50%',
+        animation: 'spin 0.8s linear infinite'
+      }} />
+    </div>
+  );
+}
 
 /* ── Landing Page wrapper ─────────────────────── */
 function LandingPage() {
@@ -42,7 +67,7 @@ function LandingPage() {
   }, []);
 
   return (
-    <div style={{ fontFamily: "'General Sans', sans-serif", WebkitFontSmoothing: 'antialiased' }}>
+    <div style={{ fontFamily: 'var(--font-display)', WebkitFontSmoothing: 'antialiased' }}>
       {/* ── Sticky Header ─────────────────────── */}
       <Navbar />
 
@@ -68,9 +93,6 @@ function LandingPage() {
 
         {/* ── Remaining Sections ─────────── */}
         <FacultyReveal />
-        {/* <DarkPromo /> — hidden, file kept in /components */}
-        {/* <Showcase /> — hidden, file kept in /components */}
-        {/* <Roadmap /> — hidden, file kept in /components */}
         <FAQ />
         <FloatingWhatsApp />
       </main>
@@ -84,11 +106,13 @@ function LandingPage() {
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/portal" element={<PortalLayout />} />
-        <Route path="/student-section" element={<StudentSection />} />
-      </Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/portal" element={<PortalLayout />} />
+          <Route path="/student-section" element={<StudentSection />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

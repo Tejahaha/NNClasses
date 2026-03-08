@@ -68,9 +68,11 @@ const FAQItem = ({ item, index, isOpen, onToggle }) => {
             }}
         >
             <button
+                id={`faq-trigger-${index}`}
                 onClick={onToggle}
-                className="w-full flex items-center justify-between gap-4 p-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00C9A7] focus-visible:ring-offset-2 rounded-lg"
+                className="w-full flex items-center justify-between gap-4 p-5 text-left focus-visible:ring-2 focus-visible:ring-[#00C9A7] focus-visible:ring-offset-2 rounded-lg"
                 aria-expanded={isOpen}
+                aria-controls={`faq-panel-${index}`}
             >
                 <div className="flex items-center gap-4 flex-1 min-w-0">
                     <span className="text-xs font-bold tracking-wider text-[#FFB347] font-mono shrink-0" style={{ fontWeight: 500 }}>
@@ -89,6 +91,9 @@ const FAQItem = ({ item, index, isOpen, onToggle }) => {
             </button>
 
             <div
+                id={`faq-panel-${index}`}
+                role="region"
+                aria-labelledby={`faq-trigger-${index}`}
                 className="overflow-hidden transition-[height] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
                 style={{ height }}
             >
@@ -240,6 +245,10 @@ export default function FAQ() {
                             We've got answers.
                         </span>
                     </h2>
+
+                    <p style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>
+                        Frequently asked questions about N&N Academy admissions, IIT-JEE coaching fees, NEET batch timings, and faculty in Vijayawada
+                    </p>
 
                     <p className="text-[clamp(15px,2vw,17px)] text-[rgba(10,22,40,0.55)] max-w-xl mx-auto leading-relaxed">
                         Everything you need to know about N & N Academy — admissions, courses, faculty, and more.

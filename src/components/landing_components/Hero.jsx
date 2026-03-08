@@ -1,26 +1,50 @@
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FadeUp } from './AnimateOnScroll';
 import Grainient from './Grainient';
 
-const B = {
-    primary: '#0A1628',   // Deep Navy
-    secondary: '#00C9A7', // Electric Teal
-    light: '#1B2C46',     // Lighter Navy for accents
-    dark: '#050D18',      // Darker Navy for depth
-    gold: '#FFB347',      // Warm Amber
-    goldLight: '#FFC875', // Lighter Amber
-    goldYellow: '#FF9E1B', // Richer Amber
-};
+import { B } from '../../tokens/brand';
 
 export default function Hero() {
     const navigate = useNavigate();
+
+    // Stats Animation Logic
+    const [counts, setCounts] = useState({ students: 0, years: 0, results: 0 });
+    const rafId = useRef(null);
+
+    useEffect(() => {
+        const duration = 1200; // 1.2 seconds
+        const startTime = performance.now();
+
+        const animate = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Ease-out cubic: 1 - pow(1 - x, 3)
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+            setCounts({
+                students: Math.floor(easedProgress * 500),
+                years: Math.floor(easedProgress * 10),
+                results: Math.floor(easedProgress * 98)
+            });
+
+            if (progress < 1) {
+                rafId.current = requestAnimationFrame(animate);
+            }
+        };
+
+        rafId.current = requestAnimationFrame(animate);
+        return () => { if (rafId.current) cancelAnimationFrame(rafId.current); };
+    }, []);
+
     return (
         <section
             id="about"
             style={{
-                minHeight: '40vh',
-                paddingBottom: 'clamp(280px, 38vw, 520px)',
-                paddingTop: '80px',
+                minHeight: 'clamp(calc(100svh - 64px), 80vh, 100vh)',
+                paddingBottom: 'clamp(140px, 34vw, 520px)',
+                paddingTop: 'clamp(70px, 10vh, 100px)',
                 position: 'relative',
                 overflow: 'visible',
                 display: 'flex',
@@ -70,13 +94,30 @@ export default function Hero() {
             {/* Content */}
             <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
 
+                <h1 style={{
+                    position: 'absolute',
+                    width: '1px',
+                    height: '1px',
+                    padding: 0,
+                    margin: '-1px',
+                    overflow: 'hidden',
+                    clip: 'rect(0,0,0,0)',
+                    whiteSpace: 'nowrap',
+                    border: 0,
+                }}>
+                    N&N Academy — IIT-JEE and NEET Coaching Institute in Vijayawada, Andhra Pradesh
+                </h1>
+
                 {/* Logo and Tagline */}
                 <FadeUp delay={0.18}>
                     <div className="flex flex-col items-center justify-center w-full relative">
                         {/* Image scaled efficiently for mobile */}
                         <img
                             src="/logos/NNClassesLargeTransparant.png"
-                            alt="N & N Academy"
+                            alt="N&N Academy — IIT-JEE and NEET Coaching Institute Vijayawada"
+                            loading="eager"
+                            width={1000}
+                            height={300}
                             className="mx-auto block mt-8 sm:mt-16 mb-4 sm:mb-6 w-full max-w-[90vw] sm:max-w-[700px] md:max-w-[1000px] h-auto object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.05)]"
                         />
 
@@ -89,9 +130,11 @@ export default function Hero() {
                             <div className="w-full h-[1px] sm:h-[2px] rounded-full pointer-events-none relative z-10" style={{ background: `linear-gradient(90deg, transparent, ${B.goldYellow}, transparent)`, boxShadow: `0 0 10px ${B.gold}` }} />
 
                             {/* Inner Golden Text */}
-                            <span className="font-display font-semibold sm:font-semibold text-[15px] sm:text-[18px] md:text-[22px] tracking-[0.15em] sm:tracking-[0.35em] uppercase relative z-20 whitespace-normal sm:whitespace-nowrap text-center leading-relaxed" style={{ color: B.goldLight, textShadow: `0 0 20px border-transparent ${B.gold}, 0 0 40px ${B.goldYellow}` }}>
-                                Institute for IIT, JEE, NEET
-                            </span>
+                            <p>
+                                <span className="font-display font-semibold sm:font-semibold text-[15px] sm:text-[18px] md:text-[22px] tracking-[0.15em] sm:tracking-[0.35em] uppercase relative z-20 whitespace-normal sm:whitespace-nowrap text-center leading-relaxed" style={{ color: B.goldLight, textShadow: `0 0 20px border-transparent ${B.gold}, 0 0 40px ${B.goldYellow}` }}>
+                                    Institute for IIT, JEE, NEET
+                                </span>
+                            </p>
 
                             {/* Bottom Golden Line */}
                             <div className="w-full h-[1px] sm:h-[2px] rounded-full pointer-events-none relative z-10" style={{ background: `linear-gradient(90deg, transparent, ${B.goldYellow}, transparent)`, boxShadow: `0 0 10px ${B.gold}` }} />
@@ -139,9 +182,30 @@ export default function Hero() {
                     </div>
                 </FadeUp>
 
+                {/* Social Proof Stats Bar */}
+                <FadeUp delay={0.6}>
+                    <div style={{ margin: '32px auto', maxWidth: '320px', borderTop: '1px solid rgba(255,255,255,0.1)' }} />
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 md:gap-16 mx-auto w-fit">
+                        <div className="text-center sm:text-left px-2 sm:px-4">
+                            <div style={{ color: '#FFB347', fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 'bold' }}>{counts.students}+</div>
+                            <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em' }} className="whitespace-nowrap">Students Enrolled</div>
+                        </div>
+                        <div className="hidden sm:block" style={{ width: '1px', height: '32px', background: 'rgba(255,255,255,0.15)' }} />
+                        <div className="text-center sm:text-left px-2 sm:px-4">
+                            <div style={{ color: '#FFB347', fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 'bold' }}>{counts.years}+</div>
+                            <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em' }} className="whitespace-nowrap">Years Teaching</div>
+                        </div>
+                        <div className="hidden sm:block" style={{ width: '1px', height: '32px', background: 'rgba(255,255,255,0.15)' }} />
+                        <div className="text-center sm:text-left px-2 sm:px-4">
+                            <div style={{ color: '#FFB347', fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 'bold' }}>{counts.results}%</div>
+                            <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em' }} className="whitespace-nowrap">Results</div>
+                        </div>
+                    </div>
+                </FadeUp>
+
                 {/* Trust bar */}
-                <FadeUp delay={0.54}>
-                    <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-6"
+                <FadeUp delay={0.72}>
+                    <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-6"
                         style={{ color: 'rgba(255,255,255,0.45)', fontSize: '15px' }}>
                         {['Trusted by 4,000+ users', 'Academic Authority', 'Premium Coaching', '99.9% Uptime'].map(t => (
                             <span key={t} className="flex items-center gap-1.5">
@@ -158,3 +222,4 @@ export default function Hero() {
         </section>
     );
 }
+

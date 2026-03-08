@@ -13,8 +13,8 @@
 /* ═══════════════════════════════════════════
    GOLDEN RATIO TYPOGRAPHY SYSTEM (φ = 1.618)
    Font families + scale registered as Tailwind v4 theme tokens.
-   Landing page uses --font-display (Clash Display).
-   Portal + all UI uses --font-ui (Inter).
+   Landing page uses --font-display (Bricolage Grotesque).
+   Portal + all UI uses --font-ui (Source Sans 3).
    Technical accents + stats use --font-mono (JetBrains Mono).
    ═══════════════════════════════════════════ */
 @theme {
@@ -431,4 +431,126 @@ body {
   to {
     opacity: 1;
   }
+}
+
+/* ── Navbar ── */
+.nn-nav-link {
+  position: relative;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240, 230, 200, 0.65);
+  text-decoration: none;
+  padding: 6px 2px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 300ms ease;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* Gold shimmer sweep across text */
+.nn-nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(120deg,
+      transparent 0%,
+      rgba(244, 197, 66, 0.12) 35%,
+      rgba(255, 230, 120, 0.28) 50%,
+      rgba(244, 197, 66, 0.12) 65%,
+      transparent 100%);
+  transform: skewX(-18deg);
+  transition: left 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+/* Gold underline expanding from center */
+.nn-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent,
+      #D4A62A 30%,
+      #F4C542 50%,
+      #D4A62A 70%,
+      transparent);
+  transition: left 340ms cubic-bezier(0.22, 1, 0.36, 1),
+    right 340ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 260ms ease;
+  opacity: 0;
+}
+
+.nn-nav-link:hover {
+  color: rgba(255, 242, 200, 1);
+}
+
+.nn-nav-link:hover::before {
+  left: 130%;
+}
+
+.nn-nav-link:hover::after {
+  left: 0%;
+  right: 0%;
+  opacity: 1;
+}
+
+/* Tiny gold diamond separator */
+.nn-sep {
+  width: 3px;
+  height: 3px;
+  background: rgba(212, 166, 42, 0.3);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  margin: 0 10px;
+}
+
+/* Mobile links */
+.nn-mobile-link {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240, 228, 190, 0.6);
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(212, 166, 42, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: color 200ms ease, gap 200ms ease;
+}
+
+.nn-mobile-link:last-of-type {
+  border-bottom: none;
+}
+
+.nn-mobile-link::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: #D4A62A;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.nn-mobile-link:hover {
+  color: rgba(255, 242, 200, 1);
+}
+
+.nn-mobile-link:hover::before {
+  opacity: 1;
 }

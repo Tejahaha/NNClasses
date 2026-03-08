@@ -1,3 +1,5 @@
+import { B } from '../../tokens/brand';
+
 export default function FloatingVideo() {
     return (
         <div style={{ position: 'relative', height: 0, zIndex: 30, overflow: 'visible' }}>

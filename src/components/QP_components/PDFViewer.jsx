@@ -14,7 +14,14 @@ export default function PDFViewer({ selectedYear, pdfUrl }) {
                     style={{ animation: 'fadeInUp 0.5s ease both' }}
                 >
                     {/* Illustration */}
-                    <img src="/illustrations/Classroom-rafiki.svg" alt="Classroom" style={{ width: '260px', maxWidth: '80%' }} />
+                    <img
+                        src="/illustrations/Classroom-rafiki.svg"
+                        alt="Select a question paper year to preview"
+                        loading="lazy"
+                        width={260}
+                        height={200}
+                        style={{ width: '260px', maxWidth: '80%' }}
+                    />
 
                     <div>
                         <h3 className="font-semibold text-lg mb-2" style={{ color: 'var(--p-text-1)' }}>

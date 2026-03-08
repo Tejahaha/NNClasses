@@ -1,14 +1,7 @@
 import Iridescence from './Iridescence';
 import { useNavigate } from 'react-router-dom';
 
-const B = {
-    primary: '#0A1628',   // Deep Navy
-    secondary: '#00C9A7', // Electric Teal
-    light: '#1B2C46',     // Lighter Navy
-    dark: '#050D18',      // Darker Navy
-    gold: '#FFB347',      // Warm Amber
-    goldYellow: '#FF9E1B', // Richer Amber
-};
+import { B } from '../../tokens/brand';
 
 const COLS = {
     Product: ['Features', 'Roadmap', 'Changelog', 'Pricing', 'Security'],
@@ -109,7 +102,8 @@ export default function Footer() {
                         <div className="flex items-center gap-2.5 mb-4">
                             <img
                                 src="/logo.png"
-                                alt="Nova"
+                                alt="N&N Classes Logo"
+                                loading="lazy"
                                 className="h-8 w-auto"
                                 onError={e => { e.target.style.display = 'none'; }}
                             />
@@ -132,10 +126,7 @@ export default function Footer() {
                                 {links.map(l => (
                                     <li key={l}>
                                         <a href="/"
-                                            className="text-[16px] transition-colors duration-150"
-                                            style={{ color: 'rgba(255,255,255,0.55)' }}
-                                            onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.85)'}
-                                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.55)'}>
+                                            className="text-[16px] transition-colors duration-150 text-white/55 hover:text-white/85">
                                             {l}
                                         </a>
                                     </li>
@@ -156,10 +147,7 @@ export default function Footer() {
                     </p>
                     <div className="flex gap-5">
                         {['Privacy', 'Terms', 'Cookies'].map(l => (
-                            <a key={l} href="/" className="text-[14px] transition-colors duration-150"
-                                style={{ color: 'rgba(255,255,255,0.5)' }}
-                                onMouseEnter={e => e.currentTarget.style.color = B.light}
-                                onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
+                            <a key={l} href="/" className="text-[14px] transition-colors duration-150 text-white/50 hover:text-[#1B2C46]">
                                 {l}
                             </a>
                         ))}

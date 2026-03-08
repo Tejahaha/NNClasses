@@ -1,11 +1,5 @@
-/**
- * PortalLayout.jsx
- * Main layout wrapper for the student portal.
- * Manages: sidebar collapse, mobile menu, active module, and content rendering.
- * Architecture: TopBar + Collapsible Sidebar + Content area.
- */
-
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
+import usePortalState from '../../hooks/usePortalState';
 import TopBar from './TopBar';
 import PortalSidebar from './PortalSidebar';
 import BottomNav from './BottomNav';
@@ -18,64 +12,19 @@ export default function PortalLayout() {
     const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-    const [activeModule, setActiveModule] = useState(() => {
-        try { return sessionStorage.getItem('portal_activeModule') || 'dashboard'; } catch { return 'dashboard'; }
-    });
-
-    // QP-specific state
-    const [selectedItem, setSelectedItem] = useState(null);
-    const [classLevel, setClassLevel] = useState(() => {
-        try { return sessionStorage.getItem('portal_classLevel') || '11th'; } catch { return '11th'; }
-    });
-    const [assignmentState, setAssignmentState] = useState(() => {
-        try {
-            const saved = sessionStorage.getItem('ss_assignmentState');
-            return saved ? JSON.parse(saved) : { classLvl: null, subject: null, chapterId: null };
-        } catch { return { classLvl: null, subject: null, chapterId: null }; }
-    });
-    const [qpSidebarOpen, setQpSidebarOpen] = useState(false);
-    const prevOverflow = useRef('');
-
-    // iOS scroll lock: disable body scroll when bottom sheet or mobile sidebar opens
-    useEffect(() => {
-        if (qpSidebarOpen) {
-            prevOverflow.current = document.body.style.overflow;
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = prevOverflow.current;
-        }
-        return () => { document.body.style.overflow = prevOverflow.current; };
-    }, [qpSidebarOpen]);
-
-    // Persist module to sessionStorage
-    useEffect(() => {
-        try { sessionStorage.setItem('portal_activeModule', activeModule); } catch { }
-    }, [activeModule]);
-
-    useEffect(() => {
-        try { sessionStorage.setItem('ss_assignmentState', JSON.stringify(assignmentState)); } catch { }
-    }, [assignmentState]);
-
-    useEffect(() => {
-        try { sessionStorage.setItem('portal_classLevel', classLevel); } catch { }
-    }, [classLevel]);
-
-    // When class level changes from header, update assignmentState (reset subject & chapter)
-    const handleClassChange = (level) => {
-        setClassLevel(level);
-        setAssignmentState({ classLvl: level, subject: null, chapterId: null });
-    };
-
-    const handleModuleSelect = (moduleId) => {
-        setActiveModule(moduleId);
-        if (moduleId !== 'question-papers') setSelectedItem(null);
-        setMobileMenuOpen(false);
-    };
-
-    const handleYearSelect = (item) => {
-        setSelectedItem(item);
-        setQpSidebarOpen(false);
-    };
+    const {
+        activeModule,
+        selectedItem,
+        classLevel,
+        setClassLevel,
+        assignmentState,
+        setAssignmentState,
+        qpSidebarOpen,
+        setQpSidebarOpen,
+        handleClassChange,
+        handleModuleSelect,
+        handleYearSelect
+    } = usePortalState(setMobileMenuOpen);
 
     // Determine which content to show
     const renderContent = () => {

@@ -7,23 +7,8 @@ export default function YearItem({ year, isActive, onClick }) {
     return (
         <button
             onClick={onClick}
-            className="w-full text-left flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all duration-200 group relative overflow-hidden"
-            style={{
-                background: isActive ? '#F9F6F0' : 'transparent',
-                color: isActive ? '#0A1628' : '#4B5563',
-            }}
-            onMouseEnter={e => {
-                if (!isActive) {
-                    e.currentTarget.style.background = '#FAFAFA';
-                    e.currentTarget.style.color = '#0A1628';
-                }
-            }}
-            onMouseLeave={e => {
-                if (!isActive) {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.color = '#4B5563';
-                }
-            }}
+            className="w-full text-left flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all duration-200 group relative overflow-hidden bg-transparent text-[#4B5563] hover:bg-[#FAFAFA] hover:text-[#0A1628]"
+            style={isActive ? { background: '#F9F6F0', color: '#0A1628' } : {}}
             aria-pressed={isActive}
         >
             {/* Left accent bar */}

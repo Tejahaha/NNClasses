@@ -39,13 +39,18 @@ export default function TopBar({ sidebarCollapsed, onToggleSidebar, onMobileMenu
                 boxShadow: 'var(--p-shadow-sm)',
             }}
         >
+            <style>{`
+                .topbar-btn:hover { background: var(--p-hover-violet-strong) !important; }
+                .class-dropdown-btn:hover { background: var(--p-hover-violet-med) !important; border-color: rgba(139, 92, 246, 0.3) !important; }
+                .class-dropdown-item:hover:not(.active) { background: var(--p-hover-violet) !important; }
+                .notification-btn:hover { background: var(--p-hover-violet-strong) !important; color: var(--p-accent) !important; }
+                .avatar-btn:hover { transform: scale(1.05) !important; box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4) !important; }
+            `}</style>
             {/* Mobile hamburger */}
             <button
                 onClick={onMobileMenu}
-                className="md:hidden p-2 rounded-xl transition-all duration-200"
+                className="md:hidden p-2 rounded-xl transition-all duration-200 topbar-btn"
                 style={{ color: 'var(--p-text-2)' }}
-                onMouseEnter={e => e.currentTarget.style.background = 'var(--p-hover-violet-strong)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                 aria-label="Toggle menu"
             >
                 <Menu size={20} />
@@ -69,10 +74,8 @@ export default function TopBar({ sidebarCollapsed, onToggleSidebar, onMobileMenu
             {/* Desktop sidebar toggle */}
             <button
                 onClick={onToggleSidebar}
-                className="hidden md:flex p-2 rounded-xl transition-all duration-200 items-center justify-center"
+                className="hidden md:flex p-2 rounded-xl transition-all duration-200 items-center justify-center topbar-btn"
                 style={{ color: 'var(--p-text-2)' }}
-                onMouseEnter={e => e.currentTarget.style.background = 'var(--p-hover-violet-strong)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                 aria-label="Toggle sidebar"
             >
                 <Menu size={20} />
@@ -137,19 +140,11 @@ export default function TopBar({ sidebarCollapsed, onToggleSidebar, onMobileMenu
                     <div className="relative" ref={dropdownRef}>
                         <button
                             onClick={() => setClassDropdownOpen(o => !o)}
-                            className="flex items-center gap-1.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 min-h-[44px]"
+                            className="flex items-center gap-1.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 min-h-[44px] class-dropdown-btn"
                             style={{
                                 background: 'var(--p-active-item)',
                                 color: 'var(--p-accent)',
                                 border: '1px solid rgba(139, 92, 246, 0.15)',
-                            }}
-                            onMouseEnter={e => {
-                                e.currentTarget.style.background = 'var(--p-hover-violet-med)';
-                                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.3)';
-                            }}
-                            onMouseLeave={e => {
-                                e.currentTarget.style.background = 'var(--p-active-item)';
-                                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.15)';
                             }}
                         >
                             Class {classLevel}
@@ -176,17 +171,11 @@ export default function TopBar({ sidebarCollapsed, onToggleSidebar, onMobileMenu
                                     <button
                                         key={level}
                                         onClick={() => { onClassChange(level); setClassDropdownOpen(false); }}
-                                        className="w-full text-left px-4 py-3 text-sm transition-all duration-150 flex items-center gap-2 min-h-[44px]"
+                                        className={`w-full text-left px-4 py-3 text-sm transition-all duration-150 flex items-center gap-2 min-h-[44px] class-dropdown-item ${classLevel === level ? 'active' : ''}`}
                                         style={{
                                             color: classLevel === level ? 'var(--p-accent)' : 'var(--p-text-2)',
                                             background: classLevel === level ? 'var(--p-hover-violet-strong)' : 'transparent',
                                             fontWeight: classLevel === level ? 600 : 400,
-                                        }}
-                                        onMouseEnter={e => {
-                                            if (classLevel !== level) e.currentTarget.style.background = 'var(--p-hover-violet)';
-                                        }}
-                                        onMouseLeave={e => {
-                                            if (classLevel !== level) e.currentTarget.style.background = 'transparent';
                                         }}
                                     >
                                         {classLevel === level && (
@@ -224,16 +213,8 @@ export default function TopBar({ sidebarCollapsed, onToggleSidebar, onMobileMenu
 
                 {/* Notifications */}
                 <button
-                    className="relative p-2.5 rounded-xl transition-all duration-200"
+                    className="relative p-2.5 rounded-xl transition-all duration-200 notification-btn"
                     style={{ color: 'var(--p-text-3)' }}
-                    onMouseEnter={e => {
-                        e.currentTarget.style.background = 'var(--p-hover-violet-strong)';
-                        e.currentTarget.style.color = 'var(--p-accent)';
-                    }}
-                    onMouseLeave={e => {
-                        e.currentTarget.style.background = 'transparent';
-                        e.currentTarget.style.color = 'var(--p-text-3)';
-                    }}
                     aria-label="Notifications"
                 >
                     <Bell size={18} />
@@ -249,19 +230,11 @@ export default function TopBar({ sidebarCollapsed, onToggleSidebar, onMobileMenu
 
                 {/* Profile avatar */}
                 <button
-                    className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-200"
+                    className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-200 avatar-btn"
                     style={{
                         background: 'linear-gradient(135deg, #8B5CF6, #06B6D4)',
                         color: '#FFFFFF',
                         boxShadow: '0 2px 8px rgba(139, 92, 246, 0.3)',
-                    }}
-                    onMouseEnter={e => {
-                        e.currentTarget.style.transform = 'scale(1.05)';
-                        e.currentTarget.style.boxShadow = '0 4px 16px rgba(139, 92, 246, 0.4)';
-                    }}
-                    onMouseLeave={e => {
-                        e.currentTarget.style.transform = 'scale(1)';
-                        e.currentTarget.style.boxShadow = '0 2px 8px rgba(139, 92, 246, 0.3)';
                     }}
                     aria-label="Profile"
                 >

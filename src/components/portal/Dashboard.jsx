@@ -5,6 +5,7 @@
  * Design: Glass/neumorphic cards with violet/cyan gradient accents.
  */
 
+import { useState, useEffect, useRef } from 'react';
 import {
     BookOpen, FileText, ClipboardCheck, Trophy,
     TrendingUp, Clock, ArrowRight, Zap,
@@ -60,6 +61,55 @@ const QUICK_ACCESS = [
     { label: 'Tests', desc: 'Practice and mock tests', module: 'tests', icon: Zap, color: '#F59E0B' },
 ];
 
+// Custom count up animation hook
+const useCountUp = (target, duration = 1200) => {
+    const [count, setCount] = useState(0);
+    const rafId = useRef(null);
+    const hasRun = useRef(false);
+
+    useEffect(() => {
+        let startTime;
+
+        const animate = (now) => {
+            if (!startTime) startTime = now;
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Ease-out cubic
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.floor(easedProgress * target));
+
+            if (progress < 1) {
+                rafId.current = requestAnimationFrame(animate);
+            }
+        };
+
+        rafId.current = requestAnimationFrame(animate);
+
+        return () => {
+            if (rafId.current) cancelAnimationFrame(rafId.current);
+        };
+    }, [target, duration]);
+
+    return count;
+};
+
+const StatValue = ({ rawValue }) => {
+    const strValue = String(rawValue);
+    // Extract non-digits prefix, digits, non-digits suffix
+    const match = strValue.match(/^(\D*)(\d+)(\D*)$/);
+
+    if (!match) return <>{strValue}</>;
+
+    const prefix = match[1];
+    const numericTarget = parseInt(match[2], 10);
+    const suffix = match[3];
+
+    const animatedValue = useCountUp(numericTarget);
+
+    return <>{prefix}{animatedValue}{suffix}</>;
+};
+
 export default function Dashboard({ onNavigate }) {
     const hour = new Date().getHours();
     const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
@@ -71,6 +121,11 @@ export default function Dashboard({ onNavigate }) {
                 background: 'var(--p-content-bg)',
             }}
         >
+            <style>{`
+                .quick-stat-card:hover { transform: translateY(-2px) !important; box-shadow: 0 8px 32px var(--shadow-color) !important; }
+                .quick-access-btn:hover { transform: translateY(-2px) !important; box-shadow: var(--p-shadow-card-hover) !important; border-color: var(--p-border-strong) !important; }
+                .recent-activity-row:hover { background-color: var(--p-hover-violet) !important; }
+            `}</style>
             <div className="max-w-6xl mx-auto px-5 md:px-8 py-6 md:py-8">
                 {/* Welcome header */}
                 <div className="mb-6 md:mb-8" style={{ animation: 'portalFadeIn 0.5s ease both' }}>
@@ -105,20 +160,13 @@ export default function Dashboard({ onNavigate }) {
                         return (
                             <div
                                 key={stat.label}
-                                className="rounded-2xl md:rounded-3xl p-4 md:p-5 transition-all duration-300 cursor-default group active:scale-[0.97]"
+                                className="rounded-2xl md:rounded-3xl p-4 md:p-5 transition-all duration-300 cursor-default group active:scale-[0.97] quick-stat-card"
                                 style={{
                                     background: 'var(--p-card)',
                                     backdropFilter: 'blur(12px)',
                                     border: '1px solid var(--p-border)',
                                     boxShadow: 'var(--p-shadow-card)',
-                                }}
-                                onMouseEnter={e => {
-                                    e.currentTarget.style.transform = 'translateY(-2px)';
-                                    e.currentTarget.style.boxShadow = `0 8px 32px ${stat.shadowColor}`;
-                                }}
-                                onMouseLeave={e => {
-                                    e.currentTarget.style.transform = 'translateY(0)';
-                                    e.currentTarget.style.boxShadow = 'var(--p-shadow-card)';
+                                    '--shadow-color': stat.shadowColor,
                                 }}
                             >
                                 <div
@@ -134,7 +182,7 @@ export default function Dashboard({ onNavigate }) {
                                     className="text-xl md:text-2xl font-bold mb-0.5"
                                     style={{ color: 'var(--p-text-1)' }}
                                 >
-                                    {stat.value}
+                                    <StatValue rawValue={stat.value} />
                                 </p>
                                 <p className="text-sm font-medium" style={{ color: 'var(--p-text-2)' }}>
                                     {stat.label}
@@ -163,22 +211,12 @@ export default function Dashboard({ onNavigate }) {
                                     <button
                                         key={item.module}
                                         onClick={() => onNavigate(item.module)}
-                                        className="text-left rounded-2xl p-4 transition-all duration-300 group flex items-start gap-4 active:scale-[0.97]"
+                                        className="text-left rounded-2xl p-4 transition-all duration-300 group flex items-start gap-4 active:scale-[0.97] quick-access-btn"
                                         style={{
                                             background: 'var(--p-card)',
                                             backdropFilter: 'blur(12px)',
                                             border: '1px solid var(--p-border)',
                                             boxShadow: 'var(--p-shadow-sm)',
-                                        }}
-                                        onMouseEnter={e => {
-                                            e.currentTarget.style.transform = 'translateY(-2px)';
-                                            e.currentTarget.style.boxShadow = 'var(--p-shadow-card-hover)';
-                                            e.currentTarget.style.borderColor = 'var(--p-border-strong)';
-                                        }}
-                                        onMouseLeave={e => {
-                                            e.currentTarget.style.transform = 'translateY(0)';
-                                            e.currentTarget.style.boxShadow = 'var(--p-shadow-sm)';
-                                            e.currentTarget.style.borderColor = 'var(--p-border)';
                                         }}
                                     >
                                         <div
@@ -238,14 +276,12 @@ export default function Dashboard({ onNavigate }) {
                                 return (
                                     <div
                                         key={idx}
-                                        className="flex items-start gap-3 px-4 py-3.5 transition-colors duration-150"
+                                        className="flex items-start gap-3 px-4 py-3.5 transition-colors duration-150 recent-activity-row"
                                         style={{
                                             borderBottom: idx < RECENT_ACTIVITY.length - 1
                                                 ? '1px solid var(--p-border)'
                                                 : 'none',
                                         }}
-                                        onMouseEnter={e => e.currentTarget.style.background = 'var(--p-hover-violet)'}
-                                        onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                                     >
                                         <div
                                             className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5"

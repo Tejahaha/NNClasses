@@ -1,14 +1,6 @@
 import { SlideLeft, SlideRight, StaggerContainer, StaggerItem, FadeUp } from './AnimateOnScroll';
 
-const B = {
-    primary: '#0A1628',   // Deep Navy
-    secondary: '#00C9A7', // Electric Teal
-    light: '#1B2C46',     // Lighter Navy
-    dark: '#050D18',      // Darker Navy
-    gold: '#FFB347',      // Warm Amber
-    goldLight: '#FFC875', // Lighter Amber
-    goldYellow: '#FF9E1B', // Richer Amber
-};
+import { B } from '../../tokens/brand';
 
 const GRID_BG = {
     backgroundColor: '#fffefd', /* Slightly tinted off-white */

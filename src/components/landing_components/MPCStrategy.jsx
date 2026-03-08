@@ -1,13 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { FadeUp, SlideLeft, SlideRight } from './AnimateOnScroll';
 
-/* ── Brand tokens ── */
-const B = {
-    primary: '#0A1628',
-    dark: '#050D18',
-    goldYellow: '#F4A621',
-    goldLight: '#FFC875',
-};
+import { B } from '../../tokens/brand';
 
 const SUBJECTS = [
     { label: 'Chemistry', questions: 20, maxQ: 25, color: '#4FD1C5' },

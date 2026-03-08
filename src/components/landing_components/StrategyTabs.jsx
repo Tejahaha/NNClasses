@@ -24,8 +24,8 @@ export default function StrategyTabs() {
                     <button
                         onClick={() => setActiveTab('mpc')}
                         className={`relative px-8 py-3 rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 w-40 text-center ${activeTab === 'mpc'
-                                ? 'text-white bg-[#0A1628] shadow-md scale-100'
-                                : 'text-[#6B7280] hover:text-[#0A1628] bg-transparent hover:bg-gray-50 scale-95'
+                            ? 'text-white bg-[#0A1628] shadow-md scale-100'
+                            : 'text-[#6B7280] hover:text-[#0A1628] bg-transparent hover:bg-gray-50 scale-95'
                             }`}
                     >
                         MPC Path
@@ -33,8 +33,8 @@ export default function StrategyTabs() {
                     <button
                         onClick={() => setActiveTab('bipc')}
                         className={`relative px-8 py-3 rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 w-40 text-center ${activeTab === 'bipc'
-                                ? 'text-white bg-[#0A1628] shadow-md scale-100'
-                                : 'text-[#6B7280] hover:text-[#0A1628] bg-transparent hover:bg-gray-50 scale-95'
+                            ? 'text-white bg-[#0A1628] shadow-md scale-100'
+                            : 'text-[#6B7280] hover:text-[#0A1628] bg-transparent hover:bg-gray-50 scale-95'
                             }`}
                     >
                         BIPC Path
